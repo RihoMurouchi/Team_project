@@ -11,10 +11,10 @@
   <%@ include file="header.jsp"%>
   <div class="main">
     <main>
-      <h2>勤怠管理システム</h2>
+      <h2>勤怠管理φ(｀д´)ﾒﾓﾒﾓ...</h2>
       <form action="menu" method="post">
-        <input type="submit" name="button" value="従業員一覧"><br>
-        <input type="submit" name="button" value="従業員登録画面へ"><br>
+        <input type="submit" name="button" value="勤怠一覧"><br>
+        <input type="submit" name="button" value="勤怠登録画面へ"><br>
         <input type="submit" name="button" value="ログアウト">
       </form>
     </main>

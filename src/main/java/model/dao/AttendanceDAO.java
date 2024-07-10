@@ -11,7 +11,7 @@ import java.util.List;
 import model.entity.AttendanceBean;
 
 public class AttendanceDAO {
-
+/*	入力された情報がデータベースに登録されているかチェック*/
 	public void registerAttendance(AttendanceBean attendance) throws ClassNotFoundException {
 		String sql = "INSERT INTO attendances (user_id, date,start_time, end_time, over_time) VALUES (?, ?, ?, ?, ?, ?)";
 
@@ -35,6 +35,7 @@ public class AttendanceDAO {
 		try (Connection con = ConnectionManager.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql)) {
 
+			// SQL文の実行
 			ResultSet res = pstmt.executeQuery();
 			while (res.next()) {
 				AttendanceBean AB = new AttendanceBean();
