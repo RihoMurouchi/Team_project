@@ -8,27 +8,27 @@ import java.sql.SQLException;
 import model.entity.UserBean;
 
 public class UserDAO {
-	public UserBean checkLogin(int id, String password) throws ClassNotFoundException, SQLException {
+
+	//=================== UserId, passwordを基にユーザー情報を取得 ========================================
+	public static UserBean checkLogin(int userId, String password) throws ClassNotFoundException, SQLException {
 		UserBean user = null;
-		
+
 		String sql = "SELECT * FROM user WHERE user_id = ? AND password = ?";
-		
+
 		try (Connection con = ConnectionManager.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql)) {
-			pstmt.setInt(1, id);
+			pstmt.setInt(1, userId);
 			pstmt.setString(2, password);
-			
+
 			ResultSet res = pstmt.executeQuery();
-			
+
 			if (res.next()) {
-				int employeeId = res.getInt("user_id");
-				String pass = res.getString("password");
-				String name = res.getString("name");
-				
-				user = new UserBean(employeeId, pass, name);
+
+				user = new UserBean(res.getInt("user_id"), res.getString("name"), res.getString("password"));
+
 			}
 		}
-		
+
 		return user;
 	}
 }

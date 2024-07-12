@@ -1,0 +1,85 @@
+package model.dao;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import model.entity.AttendanceBean;
+
+public class Test {
+
+	public static void main(String[] args) {
+
+		//=========== UserId, passwordを基にログインを承認、ユーザー情報を取得 ===============
+
+		AttendanceDAO.login​(180, "pass3");
+
+		//=========== UserId, passwordを基にユーザー情報を取得 ===============
+
+		AttendanceBean ab = new AttendanceBean();
+
+		try {
+			ab.setUser(UserDAO.checkLogin(180, "pass3"));
+			//			System.out.println(ab.getUser());//ユーザー情報を取得
+		} catch (ClassNotFoundException e1) {
+			// TODO 自動生成された catch ブロック
+			e1.printStackTrace();
+		} catch (SQLException e1) {
+			// TODO 自動生成された catch ブロック
+			e1.printStackTrace();
+		}
+
+		//============ userIdを基にログインしているユーザーの勤怠情報一覧を表示 ====================
+
+		System.out.println("========= userIdを基にログインしているユーザーの勤怠情報一覧を表示 ==========");
+		System.out.println();
+
+		try {
+
+			List<AttendanceBean> attendanceList = AttendanceDAO.userByGetAttendanceList(ab.getUser());
+			attendanceList.forEach(i -> System.out.println(i));
+
+		} catch (ClassNotFoundException e1) {
+			// TODO 自動生成された catch ブロック
+			e1.printStackTrace();
+		}
+
+		System.out.println();
+		//============ 日付を基にログインしているユーザーの勤怠情報を表示 ====================		
+
+		System.out.println("========= 日付を基にログインしているユーザーの勤怠情報を表示 ==========");
+		System.out.println();
+
+		//		System.out.println(ab.getUser().getUserId());
+
+		//		System.out.println(ab.getUser());
+
+		try {
+			List<AttendanceBean> searchList = AttendanceDAO.userBySearchAttendance("2024-07-01", ab.getUser());
+			//			for(AttendanceBean list : searchList) {
+			//				System.out.println(list);
+			//			}
+			searchList.forEach(i -> System.out.println(i));
+
+		} catch (ClassNotFoundException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
+		
+		
+		//============== 編集画面で受け取ったパラメータをAttendanceBeanにセットしそれらを基に、ユーザーの勤怠情報を更新 ============
+
+		ab.setDate("2024-07-01");
+		ab.setStartTime(null);
+		ab.setEndTime(null);
+		ab.setOverTime(null);
+		ab.getUser().getUserId();
+		
+		try {
+			AttendanceDAO.editAttendance(ab);
+		} catch (ClassNotFoundException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
+	}
+
+}
