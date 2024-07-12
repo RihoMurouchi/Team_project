@@ -16,9 +16,9 @@ pageEncoding="UTF-8"%> <%String errorMessage =
 
     <form action="login" method="post">
       <label for="userId">ユーザーID</label><br />
-      <input type="text" name="userId" id="userId" /><br />
+      <input type="text" required name="userId" id="userId" /><br />
       <lavel for="password">パスワード</lavel><br />
-      <input type="password" name="password" id="password" /><br />
+      <input type="password" required name="password" id="password" /><br />
       <input type="submit" value="ログイン" />
     </form>
   </body>

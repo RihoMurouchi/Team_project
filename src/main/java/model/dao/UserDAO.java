@@ -9,7 +9,13 @@ import model.entity.UserBean;
 
 public class UserDAO {
 
-	//=================== UserId, passwordを基にユーザー情報を取得 ========================================
+	/**
+	 * @param userId
+	 * @param password
+	 * @return UserBean
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 */
 	public static UserBean checkLogin(int userId, String password) throws ClassNotFoundException, SQLException {
 		UserBean user = null;
 
