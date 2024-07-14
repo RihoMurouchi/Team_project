@@ -17,9 +17,9 @@
 		<main>
 			<h2>勤怠管理φ(｀д´)ﾒﾓﾒﾓ...</h2>
 			<form action="menu" method="post">
-				<input type="submit" name="button" value="勤怠一覧"><br> <input
-					type="submit" name="button" value="勤怠登録画面へ"><br> <input
-					type="submit" name="button" value="ログアウト">
+				<input type="submit" name="button" value="勤怠一覧"><br>
+				<input type="submit" name="button" value="勤怠登録画面へ"><br>
+				<input type="submit" name="button" value="ログアウト">
 			</form>
 		</main>
 	</div>

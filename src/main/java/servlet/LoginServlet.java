@@ -69,7 +69,7 @@ public class LoginServlet extends HttpServlet {
 				errorMessage = "ログイン失敗しました。";
 				request.setAttribute("errorMessage", errorMessage);
 				nextPage = "login.jsp";
-				
+
 			}
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO 自動生成された catch ブロック
