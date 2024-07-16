@@ -1,39 +1,39 @@
 package model.dao;
 
-import java.sql.SQLException;
-import java.util.List;
-
 import model.entity.AttendanceBean;
 
 public class Test {
 
 	public static void main(String[] args) {
 
-		List<AttendanceBean> attendanceList = null;
+//		List<AttendanceBean> attendanceList = null;
+//
+//		try {
+//			attendanceList = AttendanceDAO.userByGetAttendanceList(UserDAO.checkLogin(180, "pass3"));
+//
+//		} catch (ClassNotFoundException | SQLException e) {
+//			// TODO 自動生成された catch ブロック
+//			e.printStackTrace();
+//		}
+//		for (AttendanceBean alist : attendanceList) {
+//			System.out.println(alist);
+//		}
+//
+//		AttendanceBean attendance = null;
+//
+//		try {
+//			attendance = AttendanceDAO.getAttendanceOne(3);
+//		} catch (ClassNotFoundException | SQLException e) {
+//			// TODO 自動生成された catch ブロック
+//			e.printStackTrace();
+//		}
 
-		try {
-			attendanceList = AttendanceDAO.userByGetAttendanceList(UserDAO.checkLogin(180, "pass3"));
-			
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO 自動生成された catch ブロック
-			e.printStackTrace();
-		}
-		for(AttendanceBean alist : attendanceList) {
-			System.out.println(alist);
-		}
+		AttendanceBean attendance = new AttendanceBean();
 		
-		
-		AttendanceBean attendance = null;
-		
-		try {
-			attendance = AttendanceDAO.getAttendanceOne(3);
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO 自動生成された catch ブロック
-			e.printStackTrace();
-		}
-		
-		System.out.println(attendance);
-//		attendanceList.forEach(i -> System.out.println(i));
+		attendance.setDate("2024-07-01");
+
+		System.out.println(attendance.getDate());
+		//		attendanceList.forEach(i -> System.out.println(i));
 
 		//
 		//		//=========== UserId, passwordを基にログインを承認、ユーザー情報を取得 ===============

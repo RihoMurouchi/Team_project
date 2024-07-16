@@ -14,19 +14,25 @@ AttendanceBean attendance = (AttendanceBean) request.getAttribute("attendance");
 <body>
 	<div>
 		<h1>勤怠編集</h1>
-		<form action="editAttendance" method="post">
+		<form action="edit-attendance" method="post">
 			<!-- 			<div> -->
 			<!-- 				<p> -->
 			<%-- 					名前：<%=attendance.getName()%></p> --%>
 			<!-- 			</div> -->
-<!-- 			<div> -->
+			<div>
 				<label for="date">date</label>
 				<textarea name="date" id="date"><%=attendance.getDate()%></textarea>
-<!-- 			</div> -->
+				<label for="startTime">startTime</label>
+				<textarea name="startTime" id="startTime"><%=attendance.getStartTime()%></textarea>
+				<label for="endTime">endTime</label>
+				<textarea name="endTime" id="endTime"><%=attendance.getEndTime()%></textarea>
+				<label for="overTime">overTime</label>
+				<textarea name="overTime" id="overTime"><%=attendance.getOverTime()%></textarea>
+			</div>
 			<div>
-				<button type="submit">更新</button>
+				<button type="submit">変更</button>
 				<input type="hidden" name="id" value="<%=attendance.getId()%>">
-				<a href="attendanceList.jsp">戻る</a>
+				<a href="attendance-list.jsp">戻る</a>
 			</div>
 		</form>
 	</div>

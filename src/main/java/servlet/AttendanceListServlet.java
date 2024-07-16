@@ -19,7 +19,7 @@ import model.entity.UserBean;
 /**
  * Servlet implementation class AttendanceList
  */
-@WebServlet("/menu")
+@WebServlet("/attendance-list")
 public class AttendanceListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -55,7 +55,7 @@ public class AttendanceListServlet extends HttpServlet {
 		request.setAttribute("attendanceList", attendanceList);
 
 		// attendanceList.jspのattendance一覧画面へ転送
-		RequestDispatcher rd = request.getRequestDispatcher("attendanceList.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("attendance-list.jsp");
 		rd.forward(request, response);
 
 	}

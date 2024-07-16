@@ -32,7 +32,7 @@ public class AttendanceDAO {
 			ResultSet res = pstmt.executeQuery();
 			while (res.next()) {
 				AttendanceBean ab = new AttendanceBean(res.getInt("id"), res.getInt("user_id"), res.getString("date"),
-						res.getTime("start_time"), res.getTime("end_time"), res.getTime("over_time"));
+						res.getString("start_time"), res.getString("end_time"), res.getString("over_time"));
 				attendanceList.add(ab);
 			}
 		}
@@ -48,9 +48,9 @@ public class AttendanceDAO {
 
 			pstmt.setInt(1, attendance.getUserId());
 			pstmt.setString(2, attendance.getDate());
-			pstmt.setTime(3, attendance.getStartTime());
-			pstmt.setTime(4, attendance.getEndTime());
-			pstmt.setTime(5, attendance.getOverTime());
+			pstmt.setString(3, attendance.getStartTime());
+			pstmt.setString(4, attendance.getEndTime());
+			pstmt.setString(5, attendance.getOverTime());
 			pstmt.executeUpdate();
 		}
 	}
@@ -88,9 +88,9 @@ public class AttendanceDAO {
 				ab.setId(res.getInt("id"));
 				ab.setDate(res.getString("date"));
 				ab.getUser().setName(res.getString("name"));
-				ab.setStartTime(res.getTime("start_time"));
-				ab.setEndTime(res.getTime("end_time"));
-				ab.setOverTime(res.getTime("over_time"));
+				ab.setStartTime(res.getString("start_time"));
+				ab.setEndTime(res.getString("end_time"));
+				ab.setOverTime(res.getString("over_time"));
 				searchList.add(ab);
 			}
 		}
@@ -128,7 +128,7 @@ public class AttendanceDAO {
 
 				// DBから取得した値を初期値として、AttendanceBeanのインスタンス生成
 				attendance = new AttendanceBean(res.getInt("id"), res.getInt("user_id"), res.getString("date"),
-						res.getTime("start_time"), res.getTime("end_time"), res.getTime("over_time"));
+						res.getString("start_time"), res.getString("end_time"), res.getString("over_time"));
 			}
 		}
 		return attendance;

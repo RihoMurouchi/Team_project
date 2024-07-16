@@ -9,9 +9,9 @@ public class AttendanceBean implements Serializable {
 	private int id;
 	private int userId;
 	private String date;
-	private Time startTime;
-	private Time endTime;
-	private Time overTime;
+	private String startTime;
+	private String endTime;
+	private String overTime;
 	private UserBean user;
 
 	public UserBean getUser() {
@@ -29,7 +29,7 @@ public class AttendanceBean implements Serializable {
 	}
 
 	// コンストラクタ
-	public AttendanceBean(int id, int userId, String date, Time startTime, Time endTime, Time overTime) {
+	public AttendanceBean(int id, int userId, String date, String startTime, String endTime, String overTime) {
 		super();
 		this.id = id;
 		this.userId = userId;
@@ -63,27 +63,27 @@ public class AttendanceBean implements Serializable {
 		this.date = date;
 	}
 
-	public Time getStartTime() {
+	public String getStartTime() {
 		return startTime;
 	}
 
-	public void setStartTime(Time startTime) {
+	public void setStartTime(String startTime) {
 		this.startTime = startTime;
 	}
 
-	public Time getEndTime() {
+	public String getEndTime() {
 		return endTime;
 	}
 
-	public void setEndTime(Time endTime) {
+	public void setEndTime(String endTime) {
 		this.endTime = endTime;
 	}
 
-	public Time getOverTime() {
+	public String getOverTime() {
 		return overTime;
 	}
 
-	public void setOverTime(Time overTime) {
+	public void setOverTime(String overTime) {
 		this.overTime = overTime;
 	}
 

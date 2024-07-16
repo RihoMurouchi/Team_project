@@ -16,7 +16,7 @@ import model.entity.AttendanceBean;
 /**
  * Servlet implementation class EditAttendance
  */
-@WebServlet("/editAttendance")
+@WebServlet("/edit-attendance")
 public class EditAttendanceServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -50,7 +50,7 @@ public class EditAttendanceServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		// リクエストスコープにtweetデータをセット
+		// リクエストスコープにattendanceリストをセット;
 		request.setAttribute("attendance", attendance);
 
 		// 転送
@@ -64,8 +64,26 @@ public class EditAttendanceServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		// リクエストのエンコーディング
+		request.setCharacterEncoding("UTF-8");
+
+		// attendanceデータを格納する変数
+		AttendanceBean attendance = new AttendanceBean();
+
+		// リクエストパラメータの取得
+		attendance.setId(Integer.parseInt(request.getParameter("id")));
+		attendance.setDate(request.getParameter("date"));
+		attendance.setStartTime(request.getParameter("startTime"));
+		attendance.setEndTime(request.getParameter("endTime"));
+		attendance.setOverTime(request.getParameter("overTime"));
+
+		// リクエストスコープにattendanceリストをセット;
+		request.setAttribute("attendance", attendance);
+		
+		// attendanceList.jspのattendance一覧画面へ転送
+		RequestDispatcher rd = request.getRequestDispatcher("editAttendanceConfirm.jsp");
+		rd.forward(request, response);
+
 	}
 
 }
