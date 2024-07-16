@@ -40,7 +40,7 @@ List<AttendanceBean> attendanceList = (List) request.getAttribute("attendanceLis
 				<td><%=attendance.getOverTime()%></td>
 				<!-- 編集と削除のリンク -->
 				<td><a href="edit-attendance?id=<%=attendance.getId()%>">編集</a></td>
-				<td><a href="delete-attendance?id=<%=attendance.getId()%>">削除</a></td>
+				<td><a href="delete-attendance-confirm?id=<%=attendance.getId()%>">削除</a></td>
 			</tr>
 			<%
 			}

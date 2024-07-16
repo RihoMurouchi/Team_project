@@ -48,7 +48,7 @@ public class LoginServlet extends HttpServlet {
 
 		//リクエストパラメータの取得
 		int userId = Integer.parseInt(request.getParameter("userId"));
-		String password = (request.getParameter("password"));
+		String password = request.getParameter("password");
 
 		//checkLoginメソッドの呼び出し
 		String nextPage = null;

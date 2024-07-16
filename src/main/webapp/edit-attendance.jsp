@@ -4,6 +4,7 @@
 	pageEncoding="UTF-8"%>
 <%
 AttendanceBean attendance = (AttendanceBean) request.getAttribute("attendance");
+UserBean user = (UserBean) request.getAttribute("user");
 %>
 <!DOCTYPE html>
 <html>
@@ -32,7 +33,7 @@ AttendanceBean attendance = (AttendanceBean) request.getAttribute("attendance");
 			<div>
 				<button type="submit">変更</button>
 				<input type="hidden" name="id" value="<%=attendance.getId()%>">
-				<a href="attendance-list.jsp">戻る</a>
+				<a href="attendance-list?id=<%=attendance.getId()%>">戻る</a>
 			</div>
 		</form>
 	</div>

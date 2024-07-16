@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class MenuServlet
+ * Servlet implementation class DeleteAttendanceCompServlet
  */
-@WebServlet("/menu")
-public class MenuServlet extends HttpServlet {
+@WebServlet("/delete-attendance-comp")
+public class DeleteAttendanceCompServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public MenuServlet() {
+	public DeleteAttendanceCompServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -41,9 +41,9 @@ public class MenuServlet extends HttpServlet {
 		//エンコーディング
 		request.setCharacterEncoding("UTF-8");
 
-		String button = (request.getParameter("button"));
+		String button = request.getParameter("button");
 
-//		System.out.println(button);
+		//				System.out.println(button);
 
 		//遷移先格納用変数
 		String nextUrl = null;
@@ -51,10 +51,6 @@ public class MenuServlet extends HttpServlet {
 		if (button != null) {
 			if ("勤怠一覧".equals(button)) {
 				nextUrl = "attendance-list";//一覧サーブレットへ
-			} else if ("勤怠登録画面へ".equals(button)) {
-				nextUrl = "attendance-";//登録サーブレットへ
-			} else if ("ログアウト".equals(button)) {
-				nextUrl = "attendance-";//ログアウトサーブレットへ
 			}
 
 		}

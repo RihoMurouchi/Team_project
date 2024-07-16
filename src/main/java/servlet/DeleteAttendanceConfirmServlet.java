@@ -16,16 +16,16 @@ import model.entity.AttendanceBean;
 import model.entity.UserBean;
 
 /**
- * Servlet implementation class EditAttendance
+ * Servlet implementation class DeletAttendanceServlet
  */
-@WebServlet("/edit-attendance")
-public class EditAttendanceServlet extends HttpServlet {
+@WebServlet("/delete-attendance-confirm")
+public class DeleteAttendanceConfirmServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public EditAttendanceServlet() {
+	public DeleteAttendanceConfirmServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -61,7 +61,7 @@ public class EditAttendanceServlet extends HttpServlet {
 		request.setAttribute("user", user);
 
 		// 転送
-		RequestDispatcher rd = request.getRequestDispatcher("edit-attendance.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("delete-attendance-confirm.jsp");
 		rd.forward(request, response);
 
 	}
@@ -71,26 +71,25 @@ public class EditAttendanceServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// リクエストのエンコーディング
-		request.setCharacterEncoding("UTF-8");
-
-		// attendanceデータを格納する変数
-		AttendanceBean attendance = new AttendanceBean();
+		// deleteAttendanceメソッドの戻り値を格納する変数
+		int count = 0;
 
 		// リクエストパラメータの取得
-		attendance.setId(Integer.parseInt(request.getParameter("id")));
-		attendance.setDate(request.getParameter("date"));
-		attendance.setStartTime(request.getParameter("startTime"));
-		attendance.setEndTime(request.getParameter("endTime"));
-		attendance.setOverTime(request.getParameter("overTime"));
+		int id = Integer.parseInt(request.getParameter("id"));
 
-		// リクエストスコープにattendanceリストをセット;
-		request.setAttribute("attendance", attendance);
+		try {
+			count = AttendanceDAO.deleteAttendance(id);
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
 
-		// attendanceList.jspのattendance一覧画面へ転送
-		RequestDispatcher rd = request.getRequestDispatcher("edit-attendance-confirm.jsp");
+		// リクエストスコープにcountをセット;
+		request.setAttribute("count", count);
+
+		// 転送
+		RequestDispatcher rd = request.getRequestDispatcher("delete-attendance-comp.jsp");
 		rd.forward(request, response);
-
 	}
 
 }

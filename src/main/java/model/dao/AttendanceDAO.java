@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -141,7 +140,7 @@ public class AttendanceDAO {
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 */
-	public static int editAttendance(int id, String date, Time startTime, Time endTime, Time overTime)
+	public static int editAttendance(int id, String date, String startTime, String endTime, String overTime)
 			throws ClassNotFoundException, SQLException {
 		int count = 0;// 更新件数を格納する変数
 
@@ -156,11 +155,11 @@ public class AttendanceDAO {
 			// 1つ目のプレースホルダーに引数dateの値をセット
 			pstmt.setString(1, date);
 			// 2つ目のプレースホルダーに引数startTimeの値をセット
-			pstmt.setTime(2, startTime);
+			pstmt.setString(2, startTime);
 			// 3つ目のプレースホルダーに引数endTimeの値をセット
-			pstmt.setTime(3, endTime);
+			pstmt.setString(3, endTime);
 			// 4つ目のプレースホルダーに引数overTimeの値をセット
-			pstmt.setTime(4, overTime);
+			pstmt.setString(4, overTime);
 			// 5つ目のプレースホルダーに引数idの値をセット
 			pstmt.setInt(5, id);
 
@@ -177,7 +176,7 @@ public class AttendanceDAO {
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 */
-	public int deleteAttendance(int id) throws ClassNotFoundException, SQLException {
+	public static int deleteAttendance(int id) throws ClassNotFoundException, SQLException {
 		int count = 0; // 削除件数を格納する変数
 
 		// SQL文（プレースホルダー1つ）
