@@ -54,7 +54,7 @@ public class EditAttendanceServlet extends HttpServlet {
 		request.setAttribute("attendance", attendance);
 
 		// 転送
-		RequestDispatcher rd = request.getRequestDispatcher("editAttendance.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("edit-attendance.jsp");
 		rd.forward(request, response);
 
 	}
@@ -81,7 +81,7 @@ public class EditAttendanceServlet extends HttpServlet {
 		request.setAttribute("attendance", attendance);
 		
 		// attendanceList.jspのattendance一覧画面へ転送
-		RequestDispatcher rd = request.getRequestDispatcher("editAttendanceConfirm.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("edit-attendance-confirm.jsp");
 		rd.forward(request, response);
 
 	}

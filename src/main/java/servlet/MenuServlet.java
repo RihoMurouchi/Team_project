@@ -43,7 +43,7 @@ public class MenuServlet extends HttpServlet {
 
 		String button = (request.getParameter("button"));
 
-		System.out.println(button);
+//		System.out.println(button);
 
 		//遷移先格納用変数
 		String nextUrl = null;
