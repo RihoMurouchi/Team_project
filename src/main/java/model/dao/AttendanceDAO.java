@@ -12,6 +12,35 @@ import model.entity.UserBean;
 
 public class AttendanceDAO {
 
+	public static int registerAttendance(int userId, String date, String startTime, String endTime, String overTime)
+			throws ClassNotFoundException, SQLException {
+		int count = 0; // 登録件数を格納する変数
+
+		// SQL文（プレースホルダー2つ）
+		String sql = "INSERT INTO attendances(user_id, date, start_time, end_time, over_time) VALUES(?, ?, ?, ?, ?)";
+
+		// データベース接続
+		// PreparedStatementでSQL実行の準備
+		try (Connection con = ConnectionManager.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);) {
+
+			// 1つ目のプレースホルダーに引数userIdの値をセット
+			pstmt.setInt(1, userId);
+			// 2つ目のプレースホルダーに引数dateの値をセット
+			pstmt.setString(2, date);
+			// 3つ目のプレースホルダーに引数startTimeの値をセット
+			pstmt.setString(3, startTime);
+			// 4つ目のプレースホルダーに引数endTimeの値をセット
+			pstmt.setString(4, endTime);
+			// 5つ目のプレースホルダーに引数overTimeの値をセット
+			pstmt.setString(5, overTime);
+
+			// SQL実行し、登録件数をcountに代入
+			count = pstmt.executeUpdate();
+		}
+		return count;
+	}
+
 	/**
 	 * @param userBean
 	 * @return List<AttendanceBean>

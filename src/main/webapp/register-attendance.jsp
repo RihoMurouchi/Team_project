@@ -11,16 +11,24 @@
 		<h1>勤怠登録</h1>
 		<form action="register-attendance" method="post">
 			<div>
-				<label for="title"></label><br>
-				<input type="text" name="name" id="title">
+				<label for="date">日付</label><br>
+				<input type="date" name="date" id="date">
 			</div>
 			<div>
-				<label for="message">勤務開始</label><br>
-				<textarea name="message" id="message"></textarea>
+				<label for="start">勤務開始</label><br>
+				<input type="time"  name="start" id="start"></textarea>
 			</div>
 			<div>
-				<button type="submit">登録</button>
-				<a href="tweet-list">戻る</a>
+			    <label for="end">勤務終了</label><br>
+				<input type="time" name="end" id="end"></textarea>
+			</div>
+			<div>
+			    <label for="over">残業時間</label><br>
+				<input type="time" name="over" id="over"></textarea>
+			</div>
+			<div>
+				<button type="submit">確認画面へ</button><br>
+				<a href="menu">戻る</a>
 			</div>
 		</form>
 	</div>
