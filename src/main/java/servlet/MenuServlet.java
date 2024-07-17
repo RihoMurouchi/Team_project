@@ -29,8 +29,16 @@ public class MenuServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+//		HttpSession session = request.getSession();
+//		System.out.println(session);
+//		UserBean user = (UserBean) session.getAttribute("user");
+//		System.out.println(user);
+//		if (session == null || user == null) {
+//			response.sendRedirect("/login.jsp"); // ユーザーがログインしていない場合、login.jspにリダイレクト
+//		} else {
+//			//もしsessionを持っていてもGetで来た場合はとりあえずlogin.jspに戻す。
+//			response.sendRedirect("/login.jsp");
+//		}
 	}
 
 	/**
@@ -43,7 +51,7 @@ public class MenuServlet extends HttpServlet {
 
 		String button = (request.getParameter("button"));
 
-//		System.out.println(button);
+		//		System.out.println(button);
 
 		//遷移先格納用変数
 		String nextUrl = null;
