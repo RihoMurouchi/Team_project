@@ -7,18 +7,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import model.entity.UserBean;
 
 /**
- * Servlet implementation class Register
+ * Servlet implementation class ByeByeServlet
  */
-@WebServlet("/register")
-public class Register extends HttpServlet {
+@WebServlet("/byebye")
+public class ByeByeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public Register() {
+	public ByeByeServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -37,6 +40,11 @@ public class Register extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+		// セッションオブジェクト取得し、セッションスコープに値をセット
+		HttpSession session = request.getSession();
+		UserBean user = (UserBean) session.getAttribute("user");
+		request.setAttribute("user", user);
+		request.getRequestDispatcher("logout.jsp").forward(request, response);
 	}
+
 }

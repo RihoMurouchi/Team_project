@@ -9,7 +9,7 @@
 <title>ログアウト画面</title>
 </head>
 <body>
-	<%=user.getUserId() %>さん、お疲れ様でした＼(^o^)／<br>
-	<a href="login">ログイン画面</a>
+	<%=user.getName() %>さん、お疲れ様でした＼(^o^)／<br>
+	<a href="login.jsp">ログイン画面</a>
 </body>
 </html>
