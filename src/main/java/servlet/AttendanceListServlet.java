@@ -36,6 +36,7 @@ public class AttendanceListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		//以下の記述がないとattendance-list.jspでサーバー起動時 500エラー NullPointerException
 		HttpSession session = request.getSession(false);
 		if (session == null || session.getAttribute("user") == null) {
 			session.invalidate();
@@ -52,12 +53,17 @@ public class AttendanceListServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// attendanceリストを格納する変数
-		List<AttendanceBean> attendanceList = null;
-
-		//セッションからユーザー情報を取得
+		// セッションからユーザー情報を取得
 		HttpSession session = request.getSession();
 		UserBean user = (UserBean) session.getAttribute("user");
+
+		//以下の記述は必要か？
+		if (session == null || user == null) {//セッションがl切れたら
+			response.sendRedirect("login.jsp"); // ユーザーがログインしていない場合、login.jspにリダイレクト
+			return;
+		}
+		// attendanceリストを格納する変数
+		List<AttendanceBean> attendanceList = null;
 
 		//attendanceDAOクラスのuserByGetAttendanceListメソッド呼び出し、attendanceリスト取得
 		try {

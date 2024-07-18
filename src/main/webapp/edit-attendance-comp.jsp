@@ -3,13 +3,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
+if (session == null || session.getAttribute("user") == null) {
+	response.sendRedirect("login.jsp");
+	return;
+}
 int count = (Integer) request.getAttribute("count");
 %>
 <%
-	if (session == null || session.getAttribute("user") == null) {
-		response.sendRedirect("login.jsp");
-		return;
-	}
+// int count = (Integer) request.getAttribute("count");
 %>
 <!DOCTYPE html>
 <html>

@@ -50,6 +50,7 @@ public class EditAttendanceConfirmServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		// セッションからユーザー情報を取得
 		HttpSession session = request.getSession();
 		if (session == null || session.getAttribute("user") == null) {
 			response.sendRedirect("login.jsp"); // ユーザーがログインしていない場合、login.jspにリダイレクト
