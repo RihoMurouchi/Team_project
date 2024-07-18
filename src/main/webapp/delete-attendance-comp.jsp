@@ -15,8 +15,7 @@ int count = (Integer) request.getAttribute("count");
 
 	<%=count%>件の勤怠情報を削除しました。
 	<br>
-
-	<form action="delete-attendance-comp" method="post">
+	<form action="attendance-list" method="post">
 		<input type="submit" name="button" value="勤怠一覧">
 	</form>
 </body>

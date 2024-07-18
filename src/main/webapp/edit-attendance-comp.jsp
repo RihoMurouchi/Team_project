@@ -13,10 +13,11 @@ int count = (Integer) request.getAttribute("count");
 </head>
 <body>
 
-	<%=count%>件の勤怠情報を変更しました。<br>
-
-	<form action="edit-attendance-comp" method="post">
-		<input type="submit" name="button" value="勤怠一覧">
+	<%=count%>件の勤怠情報を変更しました。
+	<br>
+<!-- 	<a href="attendance-list">勤怠一覧</a> -->
+	<form action="attendance-list" method="post">
+		<input type="submit" name="button" value="勤怠一覧へ">
 	</form>
 
 </body>

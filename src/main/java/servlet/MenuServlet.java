@@ -8,6 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import model.entity.UserBean;
 
 /**
  * Servlet implementation class MenuServlet
@@ -29,16 +32,16 @@ public class MenuServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-//		HttpSession session = request.getSession();
-//		System.out.println(session);
-//		UserBean user = (UserBean) session.getAttribute("user");
-//		System.out.println(user);
-//		if (session == null || user == null) {
-//			response.sendRedirect("/login.jsp"); // ユーザーがログインしていない場合、login.jspにリダイレクト
-//		} else {
-//			//もしsessionを持っていてもGetで来た場合はとりあえずlogin.jspに戻す。
-//			response.sendRedirect("/login.jsp");
-//		}
+		HttpSession session = request.getSession(false);
+		System.out.println(session);
+		UserBean user = (UserBean) session.getAttribute("user");
+		System.out.println(user);
+		if (session == null || user == null) {
+			response.sendRedirect("/login.jsp"); // ユーザーがログインしていない場合、login.jspにリダイレクト
+		} else {
+			//もしsessionを持っていてもGetで来た場合はとりあえずlogin.jspに戻す。
+			response.sendRedirect("/login.jsp");
+		}
 	}
 
 	/**
@@ -49,7 +52,7 @@ public class MenuServlet extends HttpServlet {
 		//エンコーディング
 		request.setCharacterEncoding("UTF-8");
 
-		String button = (request.getParameter("button"));
+		String button = request.getParameter("button");
 
 		//		System.out.println(button);
 

@@ -51,7 +51,7 @@ public class LoginServlet extends HttpServlet {
 		String password = request.getParameter("password");
 
 		//checkLoginメソッドの呼び出し
-		String nextPage = null;
+		String nextPage = "login.jsp";
 		try {
 			//セッションの開始
 			HttpSession session = request.getSession();
@@ -68,7 +68,6 @@ public class LoginServlet extends HttpServlet {
 				//失敗：ログイン失敗でエラーメッセージをリクエストスコープにセット
 				errorMessage = "ログイン失敗しました。";
 				request.setAttribute("errorMessage", errorMessage);
-				nextPage = "login.jsp";
 
 			}
 		} catch (ClassNotFoundException | SQLException e) {

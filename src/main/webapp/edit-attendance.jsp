@@ -16,10 +16,6 @@ UserBean user = (UserBean) request.getAttribute("user");
 	<div>
 		<h1>勤怠編集</h1>
 		<form action="edit-attendance" method="post">
-			<!-- 			<div> -->
-			<!-- 				<p> -->
-			<%-- 					名前：<%=attendance.getName()%></p> --%>
-			<!-- 			</div> -->
 			<div>
 				<label for="date">date</label>
 				<textarea name="date" id="date"><%=attendance.getDate()%></textarea>
@@ -33,8 +29,10 @@ UserBean user = (UserBean) request.getAttribute("user");
 			<div>
 				<button type="submit">変更</button>
 				<input type="hidden" name="id" value="<%=attendance.getId()%>">
-				<a href="attendance-list?id=<%=attendance.getId()%>">戻る</a>
 			</div>
+		</form>
+		<form action="attendance-list" method="post">
+			<input type="submit" name="button" value="戻る">
 		</form>
 	</div>
 </body>

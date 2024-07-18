@@ -45,6 +45,7 @@
 //
 //		// セッションから情報取得
 //		HttpSession session = req.getSession();
+
 //
 //		// 未ログインの場合、ログイン画面にリダイレクト
 //		if (session == null || session.getAttribute("user") == null) {

@@ -11,7 +11,8 @@ List<AttendanceBean> attendanceList = (List) request.getAttribute("attendanceLis
 <head>
 <meta charset="UTF-8">
 <title>勤怠一覧画面</title>
-</head>]
+</head>
+]
 <body>
 	(^^)＜今日も1日ご安全に！
 	<h1>勤怠一覧</h1>
@@ -20,7 +21,7 @@ List<AttendanceBean> attendanceList = (List) request.getAttribute("attendanceLis
 		<thead>
 			<tr>
 				<th>id</th>
-<!-- 				<th>userid</th> -->
+				<!-- 				<th>userid</th> -->
 				<th>day</th>
 				<th>strat</th>
 				<th>end</th>
@@ -33,14 +34,19 @@ List<AttendanceBean> attendanceList = (List) request.getAttribute("attendanceLis
 			%>
 			<tr>
 				<td><%=attendance.getId()%></td>
-<%-- 				<td><%=attendance.getUserId()%></td> --%>
+				<%-- 				<td><%=attendance.getUserId()%></td> --%>
 				<td><%=attendance.getDate()%></td>
 				<td><%=attendance.getStartTime()%></td>
 				<td><%=attendance.getEndTime()%></td>
 				<td><%=attendance.getOverTime()%></td>
 				<!-- 編集と削除のリンク -->
+				<form action="delete-attendance" method="post">
+				<td><button type="submit">削除仮</button></td>
+				<input type="hidden" name="id" value="<%=attendance.getId()%>">
+				</form>
 				<td><a href="edit-attendance?id=<%=attendance.getId()%>">編集</a></td>
-				<td><a href="delete-attendance-confirm?id=<%=attendance.getId()%>">削除</a></td>
+<!-- 				<td><a -->
+<%-- 					href="delete-attendance-confirm?id=<%=attendance.getId()%>">削除</a></td> --%>
 			</tr>
 			<%
 			}

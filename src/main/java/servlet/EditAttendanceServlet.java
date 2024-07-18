@@ -87,7 +87,7 @@ public class EditAttendanceServlet extends HttpServlet {
 		// リクエストスコープにattendanceリストをセット;
 		request.setAttribute("attendance", attendance);
 
-		// attendanceList.jspのattendance一覧画面へ転送
+		// edit-attendance-confirm.jspへ転送
 		RequestDispatcher rd = request.getRequestDispatcher("edit-attendance-confirm.jsp");
 		rd.forward(request, response);
 
