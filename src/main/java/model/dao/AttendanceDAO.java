@@ -49,7 +49,7 @@ public class AttendanceDAO {
 	 */
 	public static List<AttendanceBean> userByGetAttendanceList(UserBean userBean)
 			throws ClassNotFoundException, SQLException {
-		String sql = "SELECT *  FROM attendances inner join user on attendances.user_id = user.user_id where attendances.user_id = ?";
+		String sql = "SELECT *  FROM attendances where user_id = ? ORDER BY date ASC";
 
 		List<AttendanceBean> attendanceList = new ArrayList<AttendanceBean>();
 		try (Connection con = ConnectionManager.getConnection();
@@ -90,20 +90,20 @@ public class AttendanceDAO {
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 */
-	public static List<AttendanceBean> userBySearchAttendance(String date, UserBean userBean)
+	public static List<AttendanceBean> userBySearchAttendance(String date, AttendanceBean attendance)
 			throws ClassNotFoundException, SQLException {
 
 		List<AttendanceBean> searchList = new ArrayList<>();
-		String sql = "select id, name, date, start_time, end_time, over_time from attendances inner join user on attendances.user_id = user.user_id";
+		String sql = "select id, date, start_time, end_time, over_time from attendances";
 		if (date != null) {
-			sql += " WHERE date = ? AND attendances.user_id = ?";
+			sql += " WHERE date = ? AND user_id = ?";
 		}
 
 		try (Connection con = ConnectionManager.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql)) {
 			if (date != null) {
 				pstmt.setString(1, date);
-				pstmt.setInt(2, userBean.getUserId());
+				pstmt.setInt(2, attendance.getUserId());
 				//System.out.println(userBean.getUserId());
 
 			}
@@ -112,10 +112,8 @@ public class AttendanceDAO {
 
 			while (res.next()) {
 				AttendanceBean ab = new AttendanceBean();
-				ab.setUser(userBean);
 				ab.setId(res.getInt("id"));
 				ab.setDate(res.getString("date"));
-				ab.getUser().setName(res.getString("name"));
 				ab.setStartTime(res.getString("start_time"));
 				ab.setEndTime(res.getString("end_time"));
 				ab.setOverTime(res.getString("over_time"));

@@ -1,6 +1,10 @@
 package model.dao;
 
+import java.sql.SQLException;
+import java.util.List;
+
 import model.entity.AttendanceBean;
+import model.entity.UserBean;
 
 public class Test {
 
@@ -42,39 +46,39 @@ public class Test {
 		//
 		//		//=========== UserId, passwordを基にユーザー情報を取得 ===============
 		//
-		//		AttendanceBean ab = new AttendanceBean();
-		//
-		//		try {
-		//			ab.setUser(UserDAO.checkLogin(180, "pass3"));
-		//			//			System.out.println(ab.getUser());//ユーザー情報を取得
-		//		} catch (ClassNotFoundException e1) {
-		//			// TODO 自動生成された catch ブロック
-		//			e1.printStackTrace();
-		//		} catch (SQLException e1) {
-		//			// TODO 自動生成された catch ブロック
-		//			e1.printStackTrace();
-		//		}
-		//
-		//		//============ userIdを基にログインしているユーザーの勤怠情報一覧を表示 ====================
-		//
-		//		System.out.println("========= userIdを基にログインしているユーザーの勤怠情報一覧を表示 ==========");
-		//		System.out.println();
-		////
-		////		try {
-		////
-		////			List<AttendanceBean> attendanceList;
-		////			try {
-		////				attendanceList = AttendanceDAO.userByGetAttendanceList(ab.getUser());
-		////			} catch (SQLException e) {
-		////				// TODO 自動生成された catch ブロック
-		////				e.printStackTrace();
-		////			}
-		////			attendanceList.forEach(i -> System.out.println(i));
-		////
-		////		} catch (ClassNotFoundException e1) {
-		////			// TODO 自動生成された catch ブロック
-		////			e1.printStackTrace();
-		////		}
+				UserBean user = new UserBean(180,"佐々木隆成","pass3");
+		
+				try {
+					UserDAO.checkLogin(180, "pass3");
+					//			System.out.println(ab.getUser());//ユーザー情報を取得
+				} catch (ClassNotFoundException e1) {
+					// TODO 自動生成された catch ブロック
+					e1.printStackTrace();
+				} catch (SQLException e1) {
+					// TODO 自動生成された catch ブロック
+					e1.printStackTrace();
+				}
+		
+				//============ userIdを基にログインしているユーザーの勤怠情報一覧を表示 ====================
+		
+				System.out.println("========= userIdを基にログインしているユーザーの勤怠情報一覧を表示 ==========");
+				System.out.println();
+		
+				try {
+		
+					List<AttendanceBean> attendanceList = null;
+					try {
+						attendanceList = AttendanceDAO.userByGetAttendanceList(user);
+					} catch (SQLException e) {
+						// TODO 自動生成された catch ブロック
+						e.printStackTrace();
+					}
+					attendanceList.forEach(i -> System.out.println(i));
+		
+				} catch (ClassNotFoundException e1) {
+					// TODO 自動生成された catch ブロック
+					e1.printStackTrace();
+				}
 		//
 		//		System.out.println();
 		//		//============ 日付を基にログインしているユーザーの勤怠情報を表示 ====================		

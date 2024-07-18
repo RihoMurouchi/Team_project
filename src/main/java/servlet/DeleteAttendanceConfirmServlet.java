@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.dao.AttendanceDAO;
 
@@ -32,34 +33,43 @@ public class DeleteAttendanceConfirmServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		HttpSession session = request.getSession(false);
+		if (session == null || session.getAttribute("user") == null) {
+			session.invalidate();
+			response.sendRedirect("login.jsp"); // ユーザーがログインしていない場合、login.jspにリダイレクト
+		} else {
+			//もしsessionを持っていてもGetで来た場合はとりあえずlogin.jspに戻す。
+			session.invalidate();
+			response.sendRedirect("login.jsp");
+		}
 		// リクエストのエンコーディング
-//		request.setCharacterEncoding("UTF-8");
-//
-//		//セッションからユーザー情報を取得
-//		HttpSession session = request.getSession();
-//		UserBean user = (UserBean) session.getAttribute("user");
-//
-//		// リクエストパラメータの取得
-//		int id = Integer.parseInt(request.getParameter("id"));
-//
-//		// attendanceデータを格納する変数
-//		AttendanceBean attendance = null;
-//
-//		try {
-//			//getAttendanceOneメソッド呼び出し、attendanceデータ取得
-//			attendance = AttendanceDAO.getAttendanceOne(id);
-//		} catch (ClassNotFoundException | SQLException e) {
-//			// TODO 自動生成された catch ブロック
-//			e.printStackTrace();
-//		}
-//
-//		// リクエストスコープにattendanceリストをセット;
-//		request.setAttribute("attendance", attendance);
-//		request.setAttribute("user", user);
-//
-//		// 転送
-//		RequestDispatcher rd = request.getRequestDispatcher("delete-attendance-confirm.jsp");
-//		rd.forward(request, response);
+		//		request.setCharacterEncoding("UTF-8");
+		//
+		//		//セッションからユーザー情報を取得
+		//		HttpSession session = request.getSession();
+		//		UserBean user = (UserBean) session.getAttribute("user");
+		//
+		//		// リクエストパラメータの取得
+		//		int id = Integer.parseInt(request.getParameter("id"));
+		//
+		//		// attendanceデータを格納する変数
+		//		AttendanceBean attendance = null;
+		//
+		//		try {
+		//			//getAttendanceOneメソッド呼び出し、attendanceデータ取得
+		//			attendance = AttendanceDAO.getAttendanceOne(id);
+		//		} catch (ClassNotFoundException | SQLException e) {
+		//			// TODO 自動生成された catch ブロック
+		//			e.printStackTrace();
+		//		}
+		//
+		//		// リクエストスコープにattendanceリストをセット;
+		//		request.setAttribute("attendance", attendance);
+		//		request.setAttribute("user", user);
+		//
+		//		// 転送
+		//		RequestDispatcher rd = request.getRequestDispatcher("delete-attendance-confirm.jsp");
+		//		rd.forward(request, response);
 
 	}
 
@@ -68,6 +78,11 @@ public class DeleteAttendanceConfirmServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		if (session == null || session.getAttribute("user") == null) {
+			response.sendRedirect("login.jsp"); // ユーザーがログインしていない場合、login.jspにリダイレクト
+			return;
+		}
 		// deleteAttendanceメソッドの戻り値を格納する変数
 		int count = 0;
 

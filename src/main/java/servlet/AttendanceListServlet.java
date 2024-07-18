@@ -37,13 +37,12 @@ public class AttendanceListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
-//		System.out.println(session);
-//		UserBean user = (UserBean) session.getAttribute("user");
-//		System.out.println(user);
 		if (session == null || session.getAttribute("user") == null) {
+			session.invalidate();
 			response.sendRedirect("login.jsp"); // ユーザーがログインしていない場合、login.jspにリダイレクト
 		} else {
 			//もしsessionを持っていてもGetで来た場合はとりあえずlogin.jspに戻す。
+			session.invalidate();
 			response.sendRedirect("login.jsp");
 		}
 	}

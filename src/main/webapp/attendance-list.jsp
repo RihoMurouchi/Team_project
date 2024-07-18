@@ -6,6 +6,12 @@
 <%
 List<AttendanceBean> attendanceList = (List) request.getAttribute("attendanceList");
 %>
+<%
+if (session == null || session.getAttribute("user") == null) {
+	response.sendRedirect("login.jsp");
+	return;
+}
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,13 +46,13 @@ List<AttendanceBean> attendanceList = (List) request.getAttribute("attendanceLis
 				<td><%=attendance.getEndTime()%></td>
 				<td><%=attendance.getOverTime()%></td>
 				<!-- 編集と削除のリンク -->
-				<form action="delete-attendance" method="post">
-				<td><button type="submit">削除仮</button></td>
-				<input type="hidden" name="id" value="<%=attendance.getId()%>">
-				</form>
 				<td><a href="edit-attendance?id=<%=attendance.getId()%>">編集</a></td>
-<!-- 				<td><a -->
-<%-- 					href="delete-attendance-confirm?id=<%=attendance.getId()%>">削除</a></td> --%>
+				<form action="delete-attendance" method="post">
+					<td><button type="submit">削除仮</button></td> <input type="hidden"
+						name="id" value="<%=attendance.getId()%>">
+				</form>
+				<!-- 				<td><a -->
+				<%-- 					href="delete-attendance-confirm?id=<%=attendance.getId()%>">削除</a></td> --%>
 			</tr>
 			<%
 			}

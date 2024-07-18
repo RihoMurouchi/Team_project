@@ -1,7 +1,6 @@
 package model.entity;
 
 import java.io.Serializable;
-import java.sql.Time;
 
 public class AttendanceBean implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -12,15 +11,6 @@ public class AttendanceBean implements Serializable {
 	private String startTime;
 	private String endTime;
 	private String overTime;
-	private UserBean user;
-
-	public UserBean getUser() {
-		return user;
-	}
-
-	public void setUser(UserBean user) {
-		this.user = user;
-	}
 
 	// コンストラクタ
 	public AttendanceBean() {
@@ -90,7 +80,7 @@ public class AttendanceBean implements Serializable {
 	@Override
 	public String toString() {
 		return "AttendanceBean [id=" + id + ", userId=" + userId + ", date=" + date + ", startTime=" + startTime
-				+ ", endTime=" + endTime + ", overTime=" + overTime + ", user=" + user + "]";
+				+ ", endTime=" + endTime + ", overTime=" + overTime + "]";
 	}
 
 }

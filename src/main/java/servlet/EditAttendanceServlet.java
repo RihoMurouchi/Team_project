@@ -71,6 +71,11 @@ public class EditAttendanceServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		if (session == null || session.getAttribute("user") == null) {
+			response.sendRedirect("login.jsp"); // ユーザーがログインしていない場合、login.jspにリダイレクト
+			return;
+		}
 		// リクエストのエンコーディング
 		request.setCharacterEncoding("UTF-8");
 

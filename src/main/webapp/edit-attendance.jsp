@@ -6,6 +6,12 @@
 AttendanceBean attendance = (AttendanceBean) request.getAttribute("attendance");
 UserBean user = (UserBean) request.getAttribute("user");
 %>
+<%
+	if (session == null || session.getAttribute("user") == null) {
+		response.sendRedirect("login.jsp");
+		return;
+	}
+%>
 <!DOCTYPE html>
 <html>
 <head>

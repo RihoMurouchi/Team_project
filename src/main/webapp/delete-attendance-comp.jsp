@@ -5,6 +5,12 @@
 <%
 int count = (Integer) request.getAttribute("count");
 %>
+<%
+	if (session == null || session.getAttribute("user") == null) {
+		response.sendRedirect("login.jsp");
+		return;
+	}
+%>
 <!DOCTYPE html>
 <html>
 <head>

@@ -6,6 +6,12 @@
 AttendanceBean attendance = (AttendanceBean) request.getAttribute("attendance");
 UserBean user = (UserBean) request.getAttribute("user");
 %>
+<%
+if (session == null || session.getAttribute("user") == null) {
+	response.sendRedirect("login.jsp");
+	return;
+}
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,8 +46,11 @@ UserBean user = (UserBean) request.getAttribute("user");
 			<div>
 				<button type="submit">確定</button>
 				<input type="hidden" name="id" value="<%=attendance.getId()%>">
-				<a href="attendance-list?id=<%=attendance.getId()%>">戻る</a>
+				<%-- 				<a href="attendance-list?id=<%=attendance.getId()%>">戻る</a> --%>
 			</div>
+		</form>
+		<form action="attendance-list" method="post">
+			<input type="submit" name="button" value="戻る">
 		</form>
 	</div>
 

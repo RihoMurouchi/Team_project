@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.dao.AttendanceDAO;
 
@@ -32,6 +33,15 @@ public class EditAttendanceConfirmServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		HttpSession session = request.getSession(false);
+		if (session == null || session.getAttribute("user") == null) {
+			session.invalidate();
+			response.sendRedirect("login.jsp"); // ユーザーがログインしていない場合、login.jspにリダイレクト
+		} else {
+			//もしsessionを持っていてもGetで来た場合はとりあえずlogin.jspに戻す。
+			session.invalidate();
+			response.sendRedirect("login.jsp");
+		}
 
 	}
 
@@ -40,6 +50,11 @@ public class EditAttendanceConfirmServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		if (session == null || session.getAttribute("user") == null) {
+			response.sendRedirect("login.jsp"); // ユーザーがログインしていない場合、login.jspにリダイレクト
+			return;
+		}
 		// editAttendanceメソッドの戻り値を格納する変数
 		int count = 0;
 

@@ -35,8 +35,15 @@ public class DeleteAttendanceServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		HttpSession session = request.getSession(false);
+		if (session == null || session.getAttribute("user") == null) {
+			session.invalidate();
+			response.sendRedirect("login.jsp"); // ユーザーがログインしていない場合、login.jspにリダイレクト
+		} else {
+			//もしsessionを持っていてもGetで来た場合はとりあえずlogin.jspに戻す。
+			session.invalidate();
+			response.sendRedirect("login.jsp");
+		}
 	}
 
 	/**
@@ -44,11 +51,16 @@ public class DeleteAttendanceServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+//		if (session == null || session.getAttribute("user") == null) {
+//			response.sendRedirect("login.jsp"); // ユーザーがログインしていない場合、login.jspにリダイレクト
+//			return;
+//		}
+//			
 		// リクエストのエンコーディング
 		request.setCharacterEncoding("UTF-8");
 
 		//セッションからユーザー情報を取得
-		HttpSession session = request.getSession();
 		UserBean user = (UserBean) session.getAttribute("user");
 
 		// リクエストパラメータの取得
