@@ -64,7 +64,7 @@ public class MenuServlet extends HttpServlet {
 		if (button != null) {
 			if ("勤怠一覧".equals(button)) {
 				nextUrl = "attendance-list";//一覧サーブレットへ
-			} else if ("勤怠登録画面へ".equals(button)) {
+			} else if ("登録画面".equals(button)) {
 				nextUrl = "attendance-";//登録サーブレットへ
 			} else if ("ログアウト".equals(button)) {
 				nextUrl = "attendance-";//ログアウトサーブレットへ

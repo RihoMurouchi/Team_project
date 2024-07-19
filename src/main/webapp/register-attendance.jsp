@@ -7,30 +7,36 @@
 <title>勤怠登録</title>
 </head>
 <body>
-	<div>
-		<h1>勤怠登録</h1>
-		<form action="register-attendance" method="post">
-			<div>
-				<label for="date">日付</label><br>
-				<input type="date" name="date" id="date">
+	<main>
+		<div class="main">
+			<div class="main__Wrapper">
+				<h2>勤怠登録</h2>
+				<div class="main__registerBox">
+					<form action="register-attendance" method="post">
+						<div>
+							<label for="date">日付</label><br>
+							 <input type="date" name="date" id="date">
+						<div>
+							<label for="start">勤務開始</label><br>
+							 <input type="time" name="start" id="start">
+						</div>
+						<div>
+							<label for="end">勤務終了</label><br>
+							 <input type="time" name="end" id="end">
+						</div>
+						<div>
+							<label for="over">残業時間</label><br>
+							 <input type="time" name="over" id="over">
+						</div>
+					</form>
+				</div>
+				<div class="main__confirmation">
+					<button type="submit">確認画面へ</button>
+					<a href="menu">戻る</a>
+				</div>
 			</div>
-			<div>
-				<label for="start">勤務開始</label><br>
-				<input type="time"  name="start" id="start"></textarea>
-			</div>
-			<div>
-			    <label for="end">勤務終了</label><br>
-				<input type="time" name="end" id="end"></textarea>
-			</div>
-			<div>
-			    <label for="over">残業時間</label><br>
-				<input type="time" name="over" id="over"></textarea>
-			</div>
-			<div>
-				<button type="submit">確認画面へ</button><br>
-				<a href="menu">戻る</a>
-			</div>
-		</form>
-	</div>
+		</div>
+		</div>
+	</main>
 </body>
 </html>

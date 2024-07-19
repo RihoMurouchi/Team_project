@@ -17,17 +17,23 @@ if (session == null || session.getAttribute("user") == null) {
 	<%-- 	<%@ include file="header.jsp"%> --%>
 	<main>
 		<div class="main">
-			<div class="main__transition">
-				<h2>めにゅうがめん(・∀・)</h2>
-				<form action="menu" method="post">
-					<input type="submit" name="button" value="きんたいいちらん"><br>
-					<input type="submit" name="button" value="とうろくがめん"><br>
-				</form>
-			</div>
-			<div class="main__logout">
-				<form action="byebye" method="post">
-					<input type="submit" name="button" value="ろぐあうと">
-				</form>
+			<div class="main__transitionBox">
+				<h2>めにゅう(・∀・)</h2>
+				<div class="main__menu">
+					<form action="menu" method="post">
+						<input type="submit" name="button" value="勤怠一覧"><br>
+					</form>
+				</div>
+				<div class="main__register">
+					<form action="register-attendance.jsp" method="post">
+						<input type="submit" name="button" value="登録画面"><br>
+					</form>
+				</div>
+				<div class="main__logout">
+					<form action="byebye" method="post">
+						<input type="submit" name="button" value="ログアウト">
+					</form>
+				</div>
 			</div>
 	</main>
 </body>
