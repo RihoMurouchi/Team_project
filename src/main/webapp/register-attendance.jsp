@@ -32,7 +32,7 @@
 				</div>
 				<div class="main__confirmation">
 					<button type="submit">確認画面へ</button>
-					<a href="menu">戻る</a>
+					<a href="menu.jsp">戻る</a>
 				</div>
 			</div>
 		</div>
