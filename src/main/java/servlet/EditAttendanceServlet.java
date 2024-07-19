@@ -71,7 +71,8 @@ public class EditAttendanceServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		HttpSession session = request.getSession();
+		// セッションを取得し、存在しない場合はnullを返す
+		HttpSession session = request.getSession(false);
 		if (session == null || session.getAttribute("user") == null) {
 			response.sendRedirect("login.jsp"); // ユーザーがログインしていない場合、login.jspにリダイレクト
 			return;
@@ -79,10 +80,10 @@ public class EditAttendanceServlet extends HttpServlet {
 		// リクエストのエンコーディング
 		request.setCharacterEncoding("UTF-8");
 
-		// attendanceデータを格納する変数
+		// attendanceデータを格納するオブジェクトを作成
 		AttendanceBean attendance = new AttendanceBean();
 
-		// リクエストパラメータの取得
+		// リクエストパラメータの取得し格納
 		attendance.setId(Integer.parseInt(request.getParameter("id")));
 		attendance.setDate(request.getParameter("date"));
 		attendance.setStartTime(request.getParameter("startTime"));
