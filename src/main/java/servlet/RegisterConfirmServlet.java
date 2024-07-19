@@ -1,6 +1,9 @@
 package servlet;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -45,14 +48,21 @@ public class RegisterConfirmServlet extends HttpServlet {
 
 		// attendanceデータを格納する変数
 		AttendanceBean attendance = new AttendanceBean();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
 		// リクエストパラメータの取得
-		attendance.setDate(request.getParameter("date"));
+		String dateString = request.getParameter("date");
+		if (dateString != null && !dateString.isEmpty()) {
+			try {
+				LocalDate date = LocalDate.parse(dateString, formatter);
+				attendance.setDate(date.toString());
+			} catch (DateTimeParseException e) {
+				e.printStackTrace();
+			}
+		}
 		attendance.setStartTime(request.getParameter("startTime"));
 		attendance.setEndTime(request.getParameter("endTime"));
 		attendance.setOverTime(request.getParameter("overTime"));
-		
-		System.out.println(attendance);
 
 		// リクエストスコープにattendanceリストをセット;
 		request.setAttribute("attendance", attendance);
