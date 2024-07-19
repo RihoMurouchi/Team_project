@@ -31,8 +31,12 @@
 					</form>
 				</div>
 				<div class="main__confirmation">
-					<button type="submit">確認画面へ</button>
-					<a href="menu.jsp">戻る</a>
+				   <form action="register-confirm" method="post">
+						<input type="submit" name="button" value="確認画面へ"><br>
+				   </form>
+				</div>
+				<div>
+				<a href="menu.jsp">戻る</a>
 				</div>
 			</div>
 		</div>

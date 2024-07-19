@@ -34,6 +34,15 @@ public class Test {
 
 		AttendanceBean attendance = new AttendanceBean();
 		
+
+		// リクエストパラメータの取得
+		attendance.setDate("2024-07-01");
+		attendance.setStartTime("");
+		attendance.setEndTime("");
+		attendance.setOverTime("");
+		
+		System.out.println(attendance);
+		
 		attendance.setDate("2024-07-01");
 
 		System.out.println(attendance.getDate());
