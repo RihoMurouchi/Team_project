@@ -57,10 +57,10 @@ public class AttendanceListServlet extends HttpServlet {
 		UserBean user = (UserBean) session.getAttribute("user");
 
 		//以下の記述は必要か？
-		if (session == null || user == null) {//セッションがl切れたら
-			response.sendRedirect("login.jsp"); // ユーザーがログインしていない場合、login.jspにリダイレクト
-			return;
-		}
+//		if (session == null || user == null) {//セッションがl切れたら
+//			response.sendRedirect("login.jsp"); // ユーザーがログインしていない場合、login.jspにリダイレクト
+//			return;
+//		}
 		// attendanceリストを格納する変数
 		List<AttendanceBean> attendanceList = null;
 
