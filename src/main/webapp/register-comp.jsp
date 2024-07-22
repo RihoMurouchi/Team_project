@@ -21,7 +21,7 @@ if (session == null || session.getAttribute("user") == null) {
 		<div class="main__registerCompBox">
 			<h2>勤怠登録完了('◇')ゞ</h2>
 			<div class="main__registerComp">
-				<%=count%>件の勤怠情報を削除しました。
+				<%=count%>件の勤怠情報を登録しました。
 				<form action="menu.jsp" method="post">
 					<input type="submit" name="button" value="メニュー画面へ戻る">
 				</form>
