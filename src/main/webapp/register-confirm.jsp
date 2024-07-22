@@ -38,7 +38,7 @@ if (session == null || session.getAttribute("user") == null) {
 				<id="overTime"><%=attendance.getOverTime()%> <input type="hidden" name="overTime" value="<%=attendance.getOverTime()%>">
 			</div>
 			<div>
-				<button type="submit">確定</button>
+				<button type="submit">確定する</button>
 				<input type="hidden" name="userId" value="<%=attendance.getUserId()%>">
 			</div>
 			<div>
