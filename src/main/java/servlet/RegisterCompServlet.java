@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.dao.AttendanceDAO;
 import model.entity.UserBean;
 
 /**
@@ -57,17 +59,8 @@ public class RegisterCompServlet extends HttpServlet {
 
 		// ===================  リクエストパラメータの取得①　ここから======================
 		//		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-//		AttendanceBean attendance = (AttendanceBean) request.getAttribute("attendance");
-		int userId = Integer.parseInt(request.getParameter("userId"));
-		System.out.println(userId);
-		String date = request.getParameter("date");
-		System.out.println(date);
-		String startTime = request.getParameter("startTime");
-		System.out.println(startTime);
-		String endTime = request.getParameter("endTime");
-		System.out.println(endTime);
-		String overTime = request.getParameter("overTime");
-		System.out.println(overTime);
+		//		AttendanceBean attendance = (AttendanceBean) request.getAttribute("attendance");
+
 		//　日付文字列をdate型で受け取る記述 
 		//		String dateString = request.getParameter("date");
 		//		LocalDate date = LocalDate.parse(dateString, formatter);
@@ -88,14 +81,22 @@ public class RegisterCompServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		UserBean user = (UserBean) session.getAttribute("user");
 
-//		try {
-//			// AttendanceDAOクラス registerAttendanceメソッドにdate, start, end, overを渡しデータベース登録
-//			int count = AttendanceDAO.registerAttendance(user.getUserId(), attendance.getDate(),
-//					attendance.getStartTime(), attendance.getEndTime(), attendance.getOverTime());
-//			request.setAttribute("count", count);
-//		} catch (ClassNotFoundException | SQLException e) {
-//			e.printStackTrace();
-//		}
+		String date = request.getParameter("date");
+		System.out.println(date);
+		String startTime = request.getParameter("startTime");
+		System.out.println(startTime);
+		String endTime = request.getParameter("endTime");
+		System.out.println(endTime);
+		String overTime = request.getParameter("overTime");
+		System.out.println(overTime);
+
+		try {
+			// AttendanceDAOクラス registerAttendanceメソッドにdate, start, end, overを渡しデータベース登録
+			int count = AttendanceDAO.registerAttendance(user.getUserId(), date, startTime, endTime, overTime);
+			request.setAttribute("count", count);
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
 
 		// 転送
 		RequestDispatcher rd = request.getRequestDispatcher("register-comp.jsp");
