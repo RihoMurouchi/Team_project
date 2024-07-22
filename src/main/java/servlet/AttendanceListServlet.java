@@ -36,7 +36,6 @@ public class AttendanceListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		//以下の記述がないとattendance-list.jspでサーバー起動時 500エラー NullPointerException
 		HttpSession session = request.getSession(false);
 		if (session == null || session.getAttribute("user") == null) {
 			session.invalidate();
