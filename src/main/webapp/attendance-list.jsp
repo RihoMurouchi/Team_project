@@ -5,14 +5,13 @@
 	pageEncoding="UTF-8"%>
 <%
 List<AttendanceBean> attendanceList = (List) request.getAttribute("attendanceList");
-%>
-<%
-// この記述がないとlist.jspからサーバー起動できない
-if (session == null || session.getAttribute("user") == null) {
+//この記述がないとlist.jspからサーバー起動できない
+if (attendanceList == null) {
 	response.sendRedirect("login.jsp");
 	return;
 }
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
