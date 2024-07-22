@@ -19,10 +19,10 @@ if (session == null || session.getAttribute("user") == null) {
 <meta charset="UTF-8">
 <title>勤怠一覧画面</title>
 </head>
-]
+
 <body>
-	(^^)＜今日も1日ご安全に！
-	<h1>勤怠一覧</h1>
+	<h3>(^^)＜今日も1日ご安全に！</h3>
+	<h2>勤怠一覧</h2>
 	<a href="menu.jsp">メニューへ</a>
 	<table>
 		<thead>

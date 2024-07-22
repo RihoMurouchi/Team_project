@@ -149,7 +149,7 @@ public class AttendanceDAO {
 			// SQL実行し、実行結果の表と現在の行を指しているカーソルを取得
 			ResultSet res = pstmt.executeQuery();
 
-			// 実行結果の表からtweetテーブルの値を取得
+			// 実行結果の表からテーブルの値を取得
 			if (res.next()) {
 
 				// DBから取得した値を初期値として、AttendanceBeanのインスタンス生成

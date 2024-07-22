@@ -43,7 +43,7 @@ if (session == null || session.getAttribute("user") == null) {
 			</div>
 			<div>
 				<button type="submit">確定</button>
-				<input type="hidden" name="id" value="<%=attendance.getId()%>">
+				<!-- <input type="hidden" name="id" value="<%=attendance.getId()%>"> -->
 			</div>
 			<div>
 				<a href="register-attendance.jsp">戻る</a>

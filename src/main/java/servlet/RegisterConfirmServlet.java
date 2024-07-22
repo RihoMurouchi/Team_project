@@ -48,9 +48,11 @@ public class RegisterConfirmServlet extends HttpServlet {
 
 		// attendanceデータを格納する変数
 		AttendanceBean attendance = new AttendanceBean();
+
+		// =================== 日付文字列をdate型で受け取る記述 ここから======================
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
-		// リクエストパラメータの取得
+		// リクエストパラメータの取得(date)
 		String dateString = request.getParameter("date");
 		if (dateString != null && !dateString.isEmpty()) {
 			try {
@@ -60,15 +62,19 @@ public class RegisterConfirmServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-		attendance.setStartTime(request.getParameter("startTime"));
-		attendance.setEndTime(request.getParameter("endTime"));
-		attendance.setOverTime(request.getParameter("overTime"));
+		// =================== 日付文字列をdate型で受け取る記述 ここまで======================
 
-		// リクエストスコープにattendanceリストをセット;
+		// リクエストパラメータの取得
+
+		attendance.setStartTime(request.getParameter("start"));
+		attendance.setEndTime(request.getParameter("end"));
+		attendance.setOverTime(request.getParameter("over"));
+
+		// 受け取った値(attendance)をリクエストスコープにセット;
 		request.setAttribute("attendance", attendance);
 
-		// register-cfm.jspへ転送
-		RequestDispatcher rd = request.getRequestDispatcher("register-cfm.jsp");
+		// register-confim.jspへ転送
+		RequestDispatcher rd = request.getRequestDispatcher("register-confirm.jsp");
 		rd.forward(request, response);
 
 	}

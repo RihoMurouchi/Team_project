@@ -12,10 +12,11 @@
 			<div class="main__Wrapper">
 				<h2>勤怠登録</h2>
 				<div class="main__registerBox">
-					<form action="register-attendance" method="post">
+					<form action="register-confirm" method="post">
 						<div>
 							<label for="date">日付</label><br>
 							 <input type="date" name="date" id="date">
+					    </div>
 						<div>
 							<label for="start">勤務開始</label><br>
 							 <input type="time" name="start" id="start">
@@ -28,11 +29,9 @@
 							<label for="over">残業時間</label><br>
 							 <input type="time" name="over" id="over">
 						</div>
-					</form>
-				</div>
-				<div class="main__confirmation">
-				   <form action="register-confirm" method="post">
+				        <div>
 						<input type="submit" name="button" value="確認画面へ"><br>
+						</div>
 				   </form>
 				</div>
 				<div>
