@@ -22,7 +22,7 @@ String errorMessage = (String) request.getAttribute("errorMessage");
 
 	<form action="login" method="post">
 		<label for="userId">ユーザーID</label><br /> 
-		<input type="text" required name="userId" id="userId" /><br />
+		<input type="text" required name="userId" id="userId"  pattern="\d*" title="数字のみを入力してください。" /><br />
 		<label for="password">パスワード</label><br />
 		<input type="password" required name="password" id="password" /><br />
 		<input type="submit" value="ログイン" />
