@@ -23,27 +23,23 @@ if (session == null || session.getAttribute("user") == null) {
 		<form action="register-comp" method="post">
 			<div>
 				<label for="date">日付:</label>
-				<id="date"><%=attendance.getDate()%> 
-				<input type="hidden"　name="date" value="<%=attendance.getDate()%>">
+				<id="date"><%=attendance.getDate()%> <input type="hidden" name="date" value="<%=attendance.getDate()%>">
 			</div>
 			<div>
 				<label for="startTime">開始時間:</label>
-				<id="startTime"><%=attendance.getStartTime()%> 
-				<input　type="hidden" name="startTime"　value="<%=attendance.getStartTime()%>">
+				<id="startTime"><%=attendance.getStartTime()%> <input type="hidden" name="startTime" value="<%=attendance.getStartTime()%>">
 			</div>
 			<div>
 				<label for="endTime">終了時間:</label>
-				<id="endTime"><%=attendance.getEndTime()%> 
-				<input type="hidden"　name="endTime" value="<%=attendance.getEndTime()%>">
+				<id="endTime"><%=attendance.getEndTime()%> <input type="hidden"name="endTime" value="<%=attendance.getEndTime()%>">
 			</div>
 			<div>
 				<label for="overTime">残業時間:</label>
-				<id="overTime"><%=attendance.getOverTime()%>
-			    <input type="hidden" name="overTime" value="<%=attendance.getOverTime()%>">
+				<id="overTime"><%=attendance.getOverTime()%> <input type="hidden" name="overTime" value="<%=attendance.getOverTime()%>">
 			</div>
 			<div>
 				<button type="submit">確定</button>
-				<!-- <input type="hidden" name="id" value="<%=attendance.getId()%>"> -->
+				<input type="hidden" name="userId" value="<%=attendance.getUserId()%>">
 			</div>
 			<div>
 				<a href="register-attendance.jsp">戻る</a>
