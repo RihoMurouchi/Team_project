@@ -62,6 +62,7 @@ public class RegisterCompServlet extends HttpServlet {
 
 		// ===================  リクエストパラメータの取得①　ここから======================
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		//AttendanceBean attendance = (AttendanceBean) request.getAttribute("attendance");
 
 		//　日付文字列をdate型で受け取る記述 
 		String dateString = request.getParameter("date");

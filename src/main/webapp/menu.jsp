@@ -26,7 +26,7 @@ if (session == null || session.getAttribute("user") == null) {
 				</div>
 				<div class="main__register">
 					<form action="register-attendance.jsp" method="post">
-						<input type="submit" name="button" value="登録画面"><br>
+						<input type="submit" name="button" value="勤怠登録"><br>
 					</form>
 				</div>
 				<div class="main__logout">
