@@ -12,6 +12,16 @@ import model.entity.UserBean;
 
 public class AttendanceDAO {
 
+	/**
+	 * @param userId
+	 * @param date
+	 * @param startTime
+	 * @param endTime
+	 * @param overTime
+	 * @return int
+	 * @throws ClassNotFoundException 例外処理について
+	 * @throws SQLException
+	 */
 	public static int registerAttendance(int userId, String date, String startTime, String endTime, String overTime)
 			throws ClassNotFoundException, SQLException {
 		int count = 0; // 登録件数を格納する変数

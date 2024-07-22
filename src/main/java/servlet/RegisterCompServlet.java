@@ -2,8 +2,6 @@ package servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -58,34 +56,36 @@ public class RegisterCompServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		// attendanceデータを格納する変数※
-		AttendanceBean attendance = new AttendanceBean();
+		//AttendanceBean attendance = new AttendanceBean();
 
 		// ===================  リクエストパラメータの取得①　ここから======================
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-		//AttendanceBean attendance = (AttendanceBean) request.getAttribute("attendance");
-
+		//		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		AttendanceBean attendance = (AttendanceBean) request.getAttribute("attendance");
+		System.out.println(attendance);
 		//　日付文字列をdate型で受け取る記述 
-		String dateString = request.getParameter("date");
-		LocalDate date = LocalDate.parse(dateString, formatter);
-		attendance.setDate(date.toString());
-		System.out.println(dateString);
-		// ===================  リクエストパラメータの取得①　ここまで======================
+		//		String dateString = request.getParameter("date");
+		//		LocalDate date = LocalDate.parse(dateString, formatter);
+		//		attendance.setDate(date.toString());
+		//		System.out.println(dateString);
+		//		// ===================  リクエストパラメータの取得①　ここまで======================
 
-		// リクエストパラメータの取得②
-		String start = request.getParameter("start");
-		String end = request.getParameter("end");
-		String over = request.getParameter("over");
-		System.out.println();
+		//		// リクエストパラメータの取得②
+		//		String start = request.getParameter("start");
+		//		String end = request.getParameter("end");
+		//		String over = request.getParameter("over");
+		//		System.out.println();
+		//
+		//		// リクエストスコープにattendanceリストをセット;
+		//		request.setAttribute("attendance", attendance);
 
-		// リクエストスコープにattendanceリストをセット;
-		request.setAttribute("attendance", attendance);
 		//sessionからユーザー情報を取得
 		HttpSession session = request.getSession();
 		UserBean user = (UserBean) session.getAttribute("user");
 
 		try {
 			// AttendanceDAOクラス registerAttendanceメソッドにdate, start, end, overを渡しデータベース登録
-			int count = AttendanceDAO.registerAttendance(user.getUserId(), date, start, end, over);
+			int count = AttendanceDAO.registerAttendance(user.getUserId(), attendance.getDate(),
+					attendance.getStartTime(), attendance.getEndTime(), attendance.getOverTime());
 			request.setAttribute("count", count);
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
