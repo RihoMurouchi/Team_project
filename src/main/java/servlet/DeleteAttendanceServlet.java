@@ -82,7 +82,7 @@ public class DeleteAttendanceServlet extends HttpServlet {
 		request.setAttribute("user", user);
 
 		// 転送
-		RequestDispatcher rd = request.getRequestDispatcher("delete-attendance-confirm.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/delete-attendance-confirm.jsp");
 		rd.forward(request, response);
 	}
 

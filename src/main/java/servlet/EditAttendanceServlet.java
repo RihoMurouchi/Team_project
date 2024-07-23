@@ -94,7 +94,7 @@ public class EditAttendanceServlet extends HttpServlet {
 		request.setAttribute("attendance", attendance);
 
 		// edit-attendance-confirm.jspへ転送
-		RequestDispatcher rd = request.getRequestDispatcher("edit-attendance-confirm.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/edit-attendance-confirm.jsp");
 		rd.forward(request, response);
 
 	}

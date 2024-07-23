@@ -65,7 +65,6 @@ public class RegisterConfirmServlet extends HttpServlet {
 		// =================== 日付文字列をdate型で受け取る記述 ここまで======================
 
 		// リクエストパラメータの取得
-
 		attendance.setStartTime(request.getParameter("start"));
 		attendance.setEndTime(request.getParameter("end"));
 		attendance.setOverTime(request.getParameter("over"));
@@ -74,7 +73,7 @@ public class RegisterConfirmServlet extends HttpServlet {
 		request.setAttribute("attendance", attendance);
 
 		// register-confim.jspへ転送
-		RequestDispatcher rd = request.getRequestDispatcher("register-confirm.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/register-confirm.jsp");
 		rd.forward(request, response);
 
 	}

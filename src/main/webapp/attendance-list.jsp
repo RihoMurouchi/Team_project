@@ -5,6 +5,7 @@
 	pageEncoding="UTF-8"%>
 <%
 List<AttendanceBean> attendanceList = (List) request.getAttribute("attendanceList");
+
 //この記述がないとlist.jspからサーバー起動できない
 if (attendanceList == null) {
 	response.sendRedirect("login.jsp");
@@ -36,6 +37,7 @@ if (attendanceList == null) {
 		</thead>
 		<tbody>
 			<%
+// 			out.print(attendanceList);
 			for (AttendanceBean attendance : attendanceList) {
 			%>
 			<tr>
@@ -48,8 +50,7 @@ if (attendanceList == null) {
 				<!-- 編集と削除のリンク -->
 				<td><a href="edit-attendance?id=<%=attendance.getId()%>">編集</a></td>
 				<form action="delete-attendance" method="post">
-					<td><button type="submit">削除仮</button></td> <input type="hidden"
-						name="id" value="<%=attendance.getId()%>">
+					<td><button type="submit">削除仮</button></td> <input type="hidden" name="id" value="<%=attendance.getId()%>">
 				</form>
 				<!-- 				<td><a -->
 				<%-- 					href="delete-attendance-confirm?id=<%=attendance.getId()%>">削除</a></td> --%>
