@@ -24,13 +24,13 @@ UserBean user = (UserBean) request.getAttribute("user");
 		<form action="edit-attendance" method="post">
 			<div>
 				<label for="date">date</label>
-				<textarea name="date" id="date"><%=attendance.getDate()%></textarea>
+				<input type="date" name="date" id="date" value='<%=attendance.getDate()%>'>
 				<label for="startTime">startTime</label>
-				<textarea name="startTime" id="startTime"><%=attendance.getStartTime()%></textarea>
+				<input type="time" name="startTime" id="startTime" value='<%=attendance.getStartTime()%>'>
 				<label for="endTime">endTime</label>
-				<textarea name="endTime" id="endTime"><%=attendance.getEndTime()%></textarea>
+				<input type="time" name="endTime" id="endTime" value='<%=attendance.getEndTime()%>'>
 				<label for="overTime">overTime</label>
-				<textarea name="overTime" id="overTime"><%=attendance.getOverTime()%></textarea>
+				<input type="time" name="overTime" id="overTime" value='<%=attendance.getOverTime()%>'>
 			</div>
 			<div>
 				<button type="submit">変更</button>
