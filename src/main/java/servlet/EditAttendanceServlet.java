@@ -35,6 +35,7 @@ public class EditAttendanceServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		//テキストエリア内に初期値として勤怠情報を表示するための処理 ==============================
 		// リクエストのエンコーディング
 		request.setCharacterEncoding("UTF-8");
 
