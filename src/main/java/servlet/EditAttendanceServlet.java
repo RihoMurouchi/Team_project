@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
 
 import model.dao.AttendanceDAO;
 import model.entity.AttendanceBean;
-import model.entity.UserBean;
 
 /**
  * Servlet implementation class EditAttendance
@@ -39,10 +38,6 @@ public class EditAttendanceServlet extends HttpServlet {
 		// リクエストのエンコーディング
 		request.setCharacterEncoding("UTF-8");
 
-		//セッションからユーザー情報を取得
-		HttpSession session = request.getSession();
-		UserBean user = (UserBean) session.getAttribute("user");
-
 		// リクエストパラメータの取得
 		int id = Integer.parseInt(request.getParameter("id"));
 
@@ -59,7 +54,6 @@ public class EditAttendanceServlet extends HttpServlet {
 
 		// リクエストスコープにattendanceリストをセット;
 		request.setAttribute("attendance", attendance);
-		request.setAttribute("user", user);
 
 		// 転送
 		RequestDispatcher rd = request.getRequestDispatcher("edit-attendance.jsp");

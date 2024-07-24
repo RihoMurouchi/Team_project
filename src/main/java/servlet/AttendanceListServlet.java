@@ -63,10 +63,11 @@ public class AttendanceListServlet extends HttpServlet {
 		}
 		
 		// attendanceリストを格納する変数
+
 		List<AttendanceBean> attendanceList = null;
 		
 		
-        //userBySearchAttendanceの戻り値を格納する変数を用意
+        //userBySearchAttendanceメソッドの List<AttendanceBean>型 の戻り値を格納する変数を用意、初期値は null。
 		  AttendanceDAO userBySearchAttendance = new AttendanceDAO();
 		  
 		//検索ボタン押下時にuserBySearchAttendanceの処理を行う

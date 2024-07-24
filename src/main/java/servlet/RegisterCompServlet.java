@@ -80,15 +80,10 @@ public class RegisterCompServlet extends HttpServlet {
 		//sessionからユーザー情報を取得
 		HttpSession session = request.getSession();
 		UserBean user = (UserBean) session.getAttribute("user");
-
 		String date = request.getParameter("date");
-		System.out.println(date);
 		String startTime = request.getParameter("startTime");
-		System.out.println(startTime);
 		String endTime = request.getParameter("endTime");
-		System.out.println(endTime);
 		String overTime = request.getParameter("overTime");
-		System.out.println(overTime);
 
 		try {
 			// AttendanceDAOクラス registerAttendanceメソッドにdate, start, end, overを渡しデータベース登録
