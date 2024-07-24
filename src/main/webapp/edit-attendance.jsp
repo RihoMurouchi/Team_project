@@ -4,7 +4,7 @@
 	pageEncoding="UTF-8"%>
 <%
 AttendanceBean attendance = (AttendanceBean) request.getAttribute("attendance");
-UserBean user = (UserBean) request.getAttribute("user");
+UserBean user = (UserBean) session.getAttribute("user");
 %>
 <%
 	if (session == null || session.getAttribute("user") == null) {

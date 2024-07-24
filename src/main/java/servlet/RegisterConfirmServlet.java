@@ -1,9 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -50,21 +47,22 @@ public class RegisterConfirmServlet extends HttpServlet {
 		AttendanceBean attendance = new AttendanceBean();
 
 		// =================== 日付文字列をdate型で受け取る記述 ここから======================
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-
-		// リクエストパラメータの取得(date)
-		String dateString = request.getParameter("date");
-		if (dateString != null && !dateString.isEmpty()) {
-			try {
-				LocalDate date = LocalDate.parse(dateString, formatter);
-				attendance.setDate(date.toString());
-			} catch (DateTimeParseException e) {
-				e.printStackTrace();
-			}
-		}
+//		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+//
+//		// リクエストパラメータの取得(date)
+//		String dateString = request.getParameter("date");
+//		if (dateString != null && !dateString.isEmpty()) {
+//			try {
+//				LocalDate date = LocalDate.parse(dateString, formatter);
+//				attendance.setDate(date.toString());
+//			} catch (DateTimeParseException e) {
+//				e.printStackTrace();
+//			}
+//		}
 		// =================== 日付文字列をdate型で受け取る記述 ここまで======================
 
 		// リクエストパラメータの取得
+		attendance.setDate(request.getParameter("date"));
 		attendance.setStartTime(request.getParameter("start"));
 		attendance.setEndTime(request.getParameter("end"));
 		attendance.setOverTime(request.getParameter("over"));

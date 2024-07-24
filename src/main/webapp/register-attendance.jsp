@@ -15,19 +15,19 @@
 					<form action="register-confirm" method="post">
 						<div>
 							<label for="date">日付</label><br>
-							 <input type="date" name="date" id="date">
+							 <input type="date" name="date" id="date" required>
 					    </div>
 						<div>
 							<label for="start">勤務開始</label><br>
-							 <input type="time" name="start" id="start">
+							 <input type="time" name="start" id="start" required>
 						</div>
 						<div>
 							<label for="end">勤務終了</label><br>
-							 <input type="time" name="end" id="end">
+							 <input type="time" name="end" id="end" required>
 						</div>
 						<div>
 							<label for="over">残業時間</label><br>
-							 <input type="time" name="over" id="over">
+							 <input type="time" name="over" id="over" required>
 						</div>
 				        <div>
 						<input type="submit" name="button" value="確認画面へ"><br>
