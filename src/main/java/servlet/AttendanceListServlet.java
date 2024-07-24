@@ -61,8 +61,20 @@ public class AttendanceListServlet extends HttpServlet {
 			response.sendRedirect("login.jsp"); // ユーザーがログインしていない場合、login.jspにリダイレクト
 			return;
 		}
+		
 		// attendanceリストを格納する変数
 		List<AttendanceBean> attendanceList = null;
+		
+		
+        //userBySearchAttendanceの戻り値を格納する変数を用意
+		  AttendanceDAO userBySearchAttendance = new AttendanceDAO();
+		  
+		//検索ボタン押下時にuserBySearchAttendanceの処理を行う
+		//リクエストスコープにSearchlistをセット
+		//attendance-list.jspにリダイレクト
+		  
+		
+		  
 
 		//attendanceDAOクラスのuserByGetAttendanceListメソッド呼び出し、attendanceリスト取得
 		try {
