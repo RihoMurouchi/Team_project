@@ -25,6 +25,7 @@ if (attendanceList == null) {
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="css/main.css">
 <title>勤怠一覧画面</title>
 </head>
 
@@ -42,7 +43,7 @@ if (attendanceList == null) {
 					<form action="AttendanceListServlet" method="post">
 						<label for="date"></label><br>
 						<input type="date" name="date"id="date" required>
-						<input type="submit" name="button" value="検索"><br>
+						<input class="main__button" type="submit" name="button" value="検索"><br>
 						</button>
 					</form>
 				</div>
@@ -81,9 +82,9 @@ if (attendanceList == null) {
 								<td><%=attendance.getEndTime()%></td>
 								<td><%=attendance.getOverTime()%></td>
 								<!-- 編集と削除のリンク -->
-								<td><a href="edit-attendance?id=<%=attendance.getId()%>">編集</a></td>
+								<td><a class="main__button" href="edit-attendance?id=<%=attendance.getId()%>">編集</a></td>
 								<form action="delete-attendance" method="post">
-									<td><button type="submit">削除</button></td> <input type="hidden"
+									<td><button class="main__button" type="submit">削除</button></td> <input type="hidden"
 										name="id" value="<%=attendance.getId()%>">
 								</form>
 							</tr>
@@ -93,7 +94,7 @@ if (attendanceList == null) {
 						</tbody>
 					</table>
 					<div class="footer">
-						<a href="menu.jsp">メニュー画面へ戻る</a>
+						<a class="main__button" href="menu.jsp">メニュー画面へ戻る</a>
 					</div>
 				</div>
 			</div>
