@@ -8,7 +8,10 @@
 List<AttendanceBean> attendanceList = (List) request.getAttribute("attendanceList");
 String searchList = (String) request.getAttribute("searchList");
 String from = (String) request.getAttribute("from");
+String error = (String) request.getAttribute("error");
+%>
 
+<%
 //この記述がないとlist.jspからサーバー起動できない
 if (attendanceList == null) {
 	response.sendRedirect("login.jsp");
@@ -30,16 +33,21 @@ if (attendanceList == null) {
 		<div class="Wrapper">
 			<div class="main">
 				<div class="main__listTitle">
-					<h3>(^^)＜今日も1日ご安全に！</h3>
+					<marquee behavior="scroll">
+						<h3>お疲れ様です！⊂二（＾ω＾ ）二二⊃ﾌﾞｰﾝ</h3>
+					</marquee>
 					<h2>勤怠一覧</h2>
 				</div>
 				<div class="main__search">
 					<form action="AttendanceListServlet" method="post">
-						<input type="date" name="date">
-						<button type="submit" name="button" value="検索">検索</button>
+						<label for="date"></label><br>
+						<input type="date" name="date"id="date" required>
+						<input type="submit" name="button" value="検索"><br>
+						</button>
 					</form>
-					<!-- 検索結果の表示 -->
-					<!-- ボタン押下時に中身が空でなければ以下の処理が始まる -->
+				</div>
+				<!-- 検索結果の表示 -->
+				<div class="main__searchResult">
 					<%
 					if ("search".equals(from)) {
 					%>
@@ -56,7 +64,6 @@ if (attendanceList == null) {
 						<thead>
 							<tr>
 								<th>id</th>
-								<!-- 				<th>userid</th> -->
 								<th>day</th>
 								<th>strat</th>
 								<th>end</th>
@@ -69,7 +76,6 @@ if (attendanceList == null) {
 							%>
 							<tr>
 								<td><%=attendance.getId()%></td>
-								<%-- 				<td><%=attendance.getUserId()%></td> --%>
 								<td><%=attendance.getDate()%></td>
 								<td><%=attendance.getStartTime()%></td>
 								<td><%=attendance.getEndTime()%></td>
@@ -80,8 +86,6 @@ if (attendanceList == null) {
 									<td><button type="submit">削除</button></td> <input type="hidden"
 										name="id" value="<%=attendance.getId()%>">
 								</form>
-								<!-- 				<td><a -->
-								<%-- 					href="delete-attendance-confirm?id=<%=attendance.getId()%>">削除</a></td> --%>
 							</tr>
 							<%
 							}

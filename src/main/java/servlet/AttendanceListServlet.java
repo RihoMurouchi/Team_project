@@ -75,8 +75,8 @@ public class AttendanceListServlet extends HttpServlet {
 		//リクエストのエンコーディングをセット
 		request.setCharacterEncoding("UTF-8");
 
-		String button = request.getParameter("button");
-		System.out.println(button);
+		String searchButton = request.getParameter("searchButton");
+//		System.out.println(searchButton);
 		String date = request.getParameter("date");
 		System.out.println(date);
 		String from = "search";
@@ -98,10 +98,10 @@ public class AttendanceListServlet extends HttpServlet {
 				rd.forward(request, response);
 
 		//ボタン押下時に中身が空でなければ以下の処理が始まる
-		if (button != null) {
+		if (searchButton != null) {
 			//value="検索"なら以下の処理を行う
-			if ("検索".equals(button)) {
-				System.out.println(button);
+			if ("検索".equals(searchButton)) {
+				System.out.println(searchButton);
 				try {
 					searchList = AttendanceDAO.userBySearchAttendance(date);
 					request.setAttribute("from", from);

@@ -10,6 +10,6 @@
 </head>
 <body>
 	<%=user.getName() %>さん、お疲れ様でした＼(^o^)／<br>
-	<a href="login.jsp">ログイン画面</a>
+	<a href="login.jsp">ログイン画面へ戻る</a>
 </body>
 </html>
