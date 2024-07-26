@@ -18,7 +18,7 @@ String errorMessage = (String) request.getAttribute("errorMessage");
 			<%
 			if (errorMessage != null) {
 			%>
-			<p style="color: red"><%=errorMessage%></p>
+			<p class="err"><%=errorMessage%></p>
 			<%
 			}
 			%>
@@ -26,10 +26,10 @@ String errorMessage = (String) request.getAttribute("errorMessage");
 			<form action="login" method="post">
 				<label for="userId">ユーザーID</label><br />
 				<!------------------- pattern属性で数字のみの入力を許可し、title属性で説明を追加 ---------------------->
-				<input type="text" required name="userId" id="userId" pattern="\d*"
+				<input class="main__textBox" type="text" required name="userId" id="userId" pattern="\d*"
 					title="数字のみを入力してください。" /><br /> <label for="password">パスワード</label><br />
-				<input type="password" required name="password" id="password" /><br />
-				<button type="submit">ログイン</button>
+				<input class="main__textBox" type="password" required name="password" id="password" /><br />
+				<button class="main__button" type="submit">ログイン</button>
 			</form>
 		</div>
 	</main>
