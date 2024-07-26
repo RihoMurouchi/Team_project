@@ -61,36 +61,70 @@ public class AttendanceListServlet extends HttpServlet {
 			response.sendRedirect("login.jsp"); // ユーザーがログインしていない場合、login.jspにリダイレクト
 			return;
 		}
-		
-		// attendanceリストを格納する変数
 
+		// attendanceリストを格納する変数
 		List<AttendanceBean> attendanceList = null;
-		
-		
-        //userBySearchAttendanceメソッドの List<AttendanceBean>型 の戻り値を格納する変数を用意、初期値は null。
-		  List<AttendanceBean> SearchAttendance = null;
-		  
+
+		//userBySearchAttendanceメソッドの List<AttendanceBean>型 の戻り値を格納する変数を用意、初期値は null。
+		List<AttendanceBean> searchList = null;
+
 		//検索ボタン押下時にuserBySearchAttendanceの処理を行う
 		//リクエストスコープにSearchlistをセット
 		//attendance-list.jspにリダイレクト
-		  
-		
-		  
 
+		//リクエストのエンコーディングをセット
+		request.setCharacterEncoding("UTF-8");
+
+		String button = request.getParameter("button");
+		String date = request.getParameter("date");
+		String from = "search";
+		String error = "エラー！対象の勤務日がありません";
+		
 		//attendanceDAOクラスのuserByGetAttendanceListメソッド呼び出し、attendanceリスト取得
-		try {
-			attendanceList = AttendanceDAO.userByGetAttendanceList(user);
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO 自動生成された catch ブロック
-			e.printStackTrace();
+				try {
+					attendanceList = AttendanceDAO.userByGetAttendanceList(user);
+				} catch (ClassNotFoundException | SQLException e) {
+					// TODO 自動生成された catch ブロック
+					e.printStackTrace();
+				}
+
+				// リクエストスコープにattendanceリストをセット
+				request.setAttribute("attendanceList", attendanceList);
+
+				// attendanceList.jspのattendance一覧画面へ転送
+				RequestDispatcher rd = request.getRequestDispatcher("attendance-list.jsp");
+				rd.forward(request, response);
+
+		//ボタン押下時に中身が空でなければ以下の処理が始まる
+		if (button != null) {
+			//value="検索"なら以下の処理を行う
+			if ("検索".equals(button)) {
+				//System.out.println(str);
+				try {
+					searchList = AttendanceDAO.userBySearchAttendance(date);
+					request.setAttribute("from", from);
+					// リクエストスコープにsearchListをセット
+					request.setAttribute("searchList", searchList);
+					// attendanceList.jspのattendance一覧画面へリダイレクト
+					response.sendRedirect("attendance-list.jsp"); // ユーザーがログインしていない場合、login.jspにリダイレクト
+					return;
+				} catch (ClassNotFoundException | SQLException e) {
+					// TODO 自動生成された catch ブロック
+					e.printStackTrace();
+				}
+				request.setAttribute("searchList", searchList);
+				response.sendRedirect("attendance-list.jsp"); // ユーザーがログインしていない場合、login.jspにリダイレクト
+				return;
+				//対象日付がない場合はエラーメッセージ
+			} else {
+				request.setAttribute("error", error);
+				response.sendRedirect("attendance-list.jsp"); // ユーザーがログインしていない場合、login.jspにリダイレクト
+				return;
+			}
+
 		}
 
-		// リクエストスコープにattendanceリストをセット
-		request.setAttribute("attendanceList", attendanceList);
-
-		// attendanceList.jspのattendance一覧画面へ転送
-		RequestDispatcher rd = request.getRequestDispatcher("attendance-list.jsp");
-		rd.forward(request, response);
+		
 	}
 
 }
