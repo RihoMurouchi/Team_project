@@ -76,7 +76,9 @@ public class AttendanceListServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		String button = request.getParameter("button");
+		System.out.println(button);
 		String date = request.getParameter("date");
+		System.out.println(date);
 		String from = "search";
 		String error = "エラー！対象の勤務日がありません";
 		
@@ -99,12 +101,14 @@ public class AttendanceListServlet extends HttpServlet {
 		if (button != null) {
 			//value="検索"なら以下の処理を行う
 			if ("検索".equals(button)) {
-				//System.out.println(str);
+				System.out.println(button);
 				try {
 					searchList = AttendanceDAO.userBySearchAttendance(date);
 					request.setAttribute("from", from);
+					System.out.println(from);
 					// リクエストスコープにsearchListをセット
 					request.setAttribute("searchList", searchList);
+					System.out.println(searchList);
 					// attendanceList.jspのattendance一覧画面へリダイレクト
 					response.sendRedirect("attendance-list.jsp"); // ユーザーがログインしていない場合、login.jspにリダイレクト
 					return;

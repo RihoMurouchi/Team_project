@@ -3,11 +3,11 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
+
 <%//検索条件、検索結果を取得
 List<AttendanceBean> attendanceList = (List) request.getAttribute("attendanceList");
-String searchList= (String) request.getAttribute("searchList");
-String from= (String) request.getAttribute("from");
+String searchList = (String) request.getAttribute("searchList");
+String from = (String) request.getAttribute("from");
 
 //この記述がないとlist.jspからサーバー起動できない
 if (attendanceList == null) {
@@ -40,12 +40,15 @@ if (attendanceList == null) {
 					</form>
 					<!-- 検索結果の表示 -->
 					<!-- ボタン押下時に中身が空でなければ以下の処理が始まる -->
-					<%=if ("search".equals(from)){
+					<%
+					if ("search".equals(from)) {
 					%>
-					<%= searchList%>
-					<%} else { 
-						
-					}%>
+					<%=searchList%>
+					<%
+					} else {
+					//out.print(attendanceList);
+					}
+					%>
 					<%%>
 				</div>
 				<div class="main__listBox">
