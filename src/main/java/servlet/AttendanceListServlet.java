@@ -76,9 +76,7 @@ public class AttendanceListServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		String searchButton = request.getParameter("searchButton");
-//		System.out.println(searchButton);
 		String date = request.getParameter("date");
-		System.out.println(date);
 		String from = "search";
 		String error = "エラー！対象の勤務日がありません";
 		

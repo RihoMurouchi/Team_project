@@ -40,17 +40,17 @@ if (attendanceList == null) {
 					<h2>勤怠一覧</h2>
 				</div>
 				<div class="main__search">
-					<form action="AttendanceListServlet" method="post">
+					<form action="attendance-list" method="post">
 						<label for="date"></label><br>
 						<input type="date" name="date"id="date" required>
-						<input class="main__button" type="submit" name="button" value="検索"><br>
+						<input class="main__button" type="submit" name="searchButton" value="検索"><br>
 						</button>
 					</form>
 				</div>
 				<!-- 検索結果の表示 -->
 				<div class="main__searchResult">
 					<%
-					if ("search".equals(from)) {
+					if ("search".equals()) {
 					%>
 					<%=searchList%>
 					<%
