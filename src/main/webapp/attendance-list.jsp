@@ -4,9 +4,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<%//検索条件、検索結果を取得
+<%//検索条件、検索結果を取得%>
+<%
 List<AttendanceBean> attendanceList = (List) request.getAttribute("attendanceList");
-String searchList = (String) request.getAttribute("searchList");
+List<AttendanceBean> searchList = (List) request.getAttribute("searchList");
 String from = (String) request.getAttribute("from");
 String error = (String) request.getAttribute("error");
 %>
@@ -41,64 +42,118 @@ if (attendanceList == null) {
 				</div>
 				<div class="main__search">
 					<form action="attendance-list" method="post">
-						<label for="date"></label><br>
-						<input type="date" name="date"id="date" required>
-						<input class="main__button" type="submit" name="searchButton" value="検索"><br>
+						<label for="date"></label><br> <input type="date" name="date"
+							id="date" required> <input class="main__button"
+							type="submit" name="searchButton" value="検索"><br>
 						</button>
 					</form>
 				</div>
 				<!-- 検索結果の表示 -->
 				<div class="main__searchResult">
 					<%
-					if ("search".equals()) {
+					if ("search".equals(from)) {
 					%>
-					<%=searchList%>
-					<%
-					} else {
-					//out.print(attendanceList);
-					}
-					%>
-					<%%>
-				</div>
-				<div class="main__listBox">
-					<table>
-						<thead>
-							<tr>
-								<th>id</th>
-								<th>day</th>
-								<th>strat</th>
-								<th>end</th>
-								<th>over</th>
-							</tr>
-						</thead>
-						<tbody>
+					<%if (error != null || searchList.isEmpty()) {%>
+							<p class="error"><%=error%></p>
 							<%
-							for (AttendanceBean attendance : attendanceList) {
+							} else {
 							%>
-							<tr>
-								<td><%=attendance.getId()%></td>
-								<td><%=attendance.getDate()%></td>
-								<td><%=attendance.getStartTime()%></td>
-								<td><%=attendance.getEndTime()%></td>
-								<td><%=attendance.getOverTime()%></td>
-								<!-- 編集と削除のリンク -->
-								<td><a class="main__button" href="edit-attendance?id=<%=attendance.getId()%>">編集</a></td>
-								<form action="delete-attendance" method="post">
-									<td><button class="main__button" type="submit">削除</button></td> <input type="hidden"
-										name="id" value="<%=attendance.getId()%>">
-								</form>
-							</tr>
+					<div class="main__listBox">
+						<table>
+							<thead>
+								<tr>
+									<th>id</th>
+									<th>day</th>
+									<th>strat</th>
+									<th>end</th>
+									<th>over</th>
+								</tr>
+							</thead>
+							<tbody>
+								<%
+								for (AttendanceBean attendanceSearch : searchList) {
+								%>
+								<tr>
+									<td><%=attendanceSearch.getId()%></td>
+									<td><%=attendanceSearch.getDate()%></td>
+									<td><%=attendanceSearch.getStartTime()%></td>
+									<td><%=attendanceSearch.getEndTime()%></td>
+									<td><%=attendanceSearch.getOverTime()%></td>
+							
+									<td><a class="main__button"
+										href="edit-attendance?id=<%=attendanceSearch.getId()%>">編集</a></td>
+									<form action="delete-attendance" method="post">
+										<td><button class="main__button" type="submit">削除</button></td>
+										<input type="hidden" name="id"
+											value="<%=attendanceSearch.getId()%>">
+									</form>
+								</tr>
+								<%
+								}
+								%>
+								<%
+								}
+								%>
+								
+							</tbody>
+						</table>
+						<div class="footer">
+							<form action="attendance-list" method="post">
+								<input class="main__button" type="submit" name="button"
+									value="戻る">
+							</form>
+						</div>
+						<%
+						} else if (attendanceList != null) {
+						%>
+						<div class="main__listBox">
+							<table>
+								<thead>
+									<tr>
+										<th>id</th>
+										<th>day</th>
+										<th>strat</th>
+										<th>end</th>
+										<th>over</th>
+									</tr>
+								</thead>
+								<tbody>
+									<%
+									for (AttendanceBean attendance : attendanceList) {
+									%>
+									<tr>
+										<td><%=attendance.getId()%></td>
+										<td><%=attendance.getDate()%></td>
+										<td><%=attendance.getStartTime()%></td>
+										<td><%=attendance.getEndTime()%></td>
+										<td><%=attendance.getOverTime()%></td>
+										<!-- 編集と削除のリンク -->
+										<td><a class="main__button"
+											href="edit-attendance?id=<%=attendance.getId()%>">編集</a></td>
+										<form action="delete-attendance" method="post">
+											<td><button class="main__button" type="submit">削除</button></td>
+											<input type="hidden" name="id"
+												value="<%=attendance.getId()%>">
+										</form>
+									</tr>
+									<%
+									}
+									%>
+								</tbody>
+							</table>
+							<div class="footer">
+								<a class="main__button" href="menu.jsp">メニュー画面へ戻る</a>
+							</div>
 							<%
 							}
 							%>
-						</tbody>
-					</table>
-					<div class="footer">
-						<a class="main__button" href="menu.jsp">メニュー画面へ戻る</a>
+							
+							
+						</div>
+
 					</div>
 				</div>
 			</div>
-		</div>
 	</main>
 </body>
 </html>

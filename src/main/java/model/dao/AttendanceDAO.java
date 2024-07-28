@@ -100,19 +100,20 @@ public class AttendanceDAO {
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 */
-	public static List<AttendanceBean> userBySearchAttendance(String date)
+	public static List<AttendanceBean> userBySearchAttendance(int userId, String date)
 			throws ClassNotFoundException, SQLException {
 
 		List<AttendanceBean> searchList = new ArrayList<>();
 		String sql = "select id, date, start_time, end_time, over_time from attendances";
 		if (date != null) {
-			sql += " WHERE date = ? ";
+			sql += " WHERE user_id = ? AND date = ? ";
 		}
 
 		try (Connection con = ConnectionManager.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql)) {
 			if (date != null) {
-				pstmt.setString(1, date);
+				pstmt.setInt(1, userId);
+				pstmt.setString(2, date);
 				//System.out.println(userBean.getUserId());
 
 			}

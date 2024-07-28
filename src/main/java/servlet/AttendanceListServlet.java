@@ -78,22 +78,23 @@ public class AttendanceListServlet extends HttpServlet {
 		String searchButton = request.getParameter("searchButton");
 		String date = request.getParameter("date");
 		String from = "search";
-		String error = "エラー！対象の勤務日がありません";
-		
+		String error;
+
 		//attendanceDAOクラスのuserByGetAttendanceListメソッド呼び出し、attendanceリスト取得
-				try {
-					attendanceList = AttendanceDAO.userByGetAttendanceList(user);
-				} catch (ClassNotFoundException | SQLException e) {
-					// TODO 自動生成された catch ブロック
-					e.printStackTrace();
-				}
+		try {
+			attendanceList = AttendanceDAO.userByGetAttendanceList(user);
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
 
-				// リクエストスコープにattendanceリストをセット
-				request.setAttribute("attendanceList", attendanceList);
+		// リクエストスコープにattendanceリストをセット
+		request.setAttribute("attendanceList", attendanceList);
 
-				// attendanceList.jspのattendance一覧画面へ転送
-				RequestDispatcher rd = request.getRequestDispatcher("attendance-list.jsp");
-				rd.forward(request, response);
+		// attendanceList.jspのattendance一覧画面へ転送
+//		RequestDispatcher rd = request.getRequestDispatcher("attendance-list.jsp");
+//		rd.forward(request, response);
+//		return;
 
 		//ボタン押下時に中身が空でなければ以下の処理が始まる
 		if (searchButton != null) {
@@ -101,32 +102,41 @@ public class AttendanceListServlet extends HttpServlet {
 			if ("検索".equals(searchButton)) {
 				System.out.println(searchButton);
 				try {
-					searchList = AttendanceDAO.userBySearchAttendance(date);
-					request.setAttribute("from", from);
-					System.out.println(from);
-					// リクエストスコープにsearchListをセット
-					request.setAttribute("searchList", searchList);
-					System.out.println(searchList);
-					// attendanceList.jspのattendance一覧画面へリダイレクト
-					response.sendRedirect("attendance-list.jsp"); // ユーザーがログインしていない場合、login.jspにリダイレクト
-					return;
+					searchList = AttendanceDAO.userBySearchAttendance(user.getUserId(), date);
+					if (searchList == null || searchList.size() == 0) {
+						error = "勤怠情報が登録されていません";
+						System.out.println(error);
+						request.setAttribute("from", from);
+						request.setAttribute("error", error);
+						RequestDispatcher rd = request.getRequestDispatcher("attendance-list.jsp");
+						rd.forward(request, response);
+						return;
+					}else {
+						request.setAttribute("from", from);
+						System.out.println(from);
+						// リクエストスコープにsearchListをセット
+						request.setAttribute("searchList", searchList);
+						System.out.println(searchList);
+						
+					}
+				
 				} catch (ClassNotFoundException | SQLException e) {
 					// TODO 自動生成された catch ブロック
 					e.printStackTrace();
 				}
-				request.setAttribute("searchList", searchList);
-				response.sendRedirect("attendance-list.jsp"); // ユーザーがログインしていない場合、login.jspにリダイレクト
-				return;
+				//			request.setAttribute("searchList", searchList);
+				//			response.sendRedirect("attendance-list.jsp"); // ユーザーがログインしていない場合、login.jspにリダイレクト
+				//			return;
 				//対象日付がない場合はエラーメッセージ
-			} else {
-				request.setAttribute("error", error);
-				response.sendRedirect("attendance-list.jsp"); // ユーザーがログインしていない場合、login.jspにリダイレクト
-				return;
 			}
-
+			/*request.setAttribute("error", error);
+			response.sendRedirect("attendance-list.jsp"); // ユーザーがログインしていない場合、login.jspにリダイレクト
+			return;*/
 		}
+		RequestDispatcher rd = request.getRequestDispatcher("attendance-list.jsp");
+		rd.forward(request, response);
+		return;
 
-		
 	}
-
+	
 }
