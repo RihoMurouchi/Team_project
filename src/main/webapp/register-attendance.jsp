@@ -35,7 +35,7 @@
 				   </form>
 				</div>
 				<div>
-				<a href="menu.jsp">戻る</a>
+				<button type="button" onclick="history.back()">戻る</button>
 				</div>
 			</div>
 		</div>

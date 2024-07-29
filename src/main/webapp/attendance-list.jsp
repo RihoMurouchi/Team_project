@@ -19,9 +19,6 @@ if (attendanceList == null) {
 	return;
 }
 %>
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,7 +26,6 @@ if (attendanceList == null) {
 <link rel="stylesheet" href="css/main.css">
 <title>勤怠一覧画面</title>
 </head>
-
 <body>
 	<main>
 		<div class="Wrapper">
@@ -54,10 +50,10 @@ if (attendanceList == null) {
 					if ("search".equals(from)) {
 					%>
 					<%if (error != null || searchList.isEmpty()) {%>
-							<p class="error"><%=error%></p>
-							<%
-							} else {
-							%>
+					<p class="error"><%=error%></p>
+					<%
+					} else {
+					%>
 					<div class="main__listBox">
 						<table>
 							<thead>
@@ -79,7 +75,7 @@ if (attendanceList == null) {
 									<td><%=attendanceSearch.getStartTime()%></td>
 									<td><%=attendanceSearch.getEndTime()%></td>
 									<td><%=attendanceSearch.getOverTime()%></td>
-							
+
 									<td><a class="main__button"
 										href="edit-attendance?id=<%=attendanceSearch.getId()%>">編集</a></td>
 									<form action="delete-attendance" method="post">
@@ -94,7 +90,7 @@ if (attendanceList == null) {
 								<%
 								}
 								%>
-								
+
 							</tbody>
 						</table>
 						<div class="footer">
@@ -105,6 +101,17 @@ if (attendanceList == null) {
 						</div>
 						<%
 						} else if (attendanceList != null) {
+						%>
+						<%if (attendanceList.size() == 0) {%>
+						<p class="error">勤怠情報は登録されていません。</p>
+						<div class="main__register">
+							<form action="register-attendance.jsp" method="post">
+								<input class="main__button" type="submit" name="button"
+									value="勤怠登録"><br>
+							</form>
+						</div>
+						<%
+						} else {
 						%>
 						<div class="main__listBox">
 							<table>
@@ -139,6 +146,9 @@ if (attendanceList == null) {
 									<%
 									}
 									%>
+									<%
+									}
+									%>
 								</tbody>
 							</table>
 							<div class="footer">
@@ -147,8 +157,8 @@ if (attendanceList == null) {
 							<%
 							}
 							%>
-							
-							
+
+
 						</div>
 
 					</div>

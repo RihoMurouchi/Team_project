@@ -4,7 +4,7 @@
 	pageEncoding="UTF-8"%>
 <%
 AttendanceBean attendance = (AttendanceBean) request.getAttribute("attendance");
-UserBean user = (UserBean) request.getAttribute("user");
+UserBean user = (UserBean) session.getAttribute("user");
 %>
 <%
 if (session == null || session.getAttribute("user") == null) {
@@ -46,7 +46,6 @@ if (session == null || session.getAttribute("user") == null) {
 			<div>
 				<button type="submit">確定</button>
 				<input type="hidden" name="id" value="<%=attendance.getId()%>">
-				<%-- 				<a href="attendance-list?id=<%=attendance.getId()%>">戻る</a> --%>
 			</div>
 		</form>
 		<form action="attendance-list" method="post">
