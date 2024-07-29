@@ -54,29 +54,6 @@ public class RegisterCompServlet extends HttpServlet {
 		// リクエストのエンコーディング
 		request.setCharacterEncoding("UTF-8");
 
-		// attendanceデータを格納する変数※
-		//AttendanceBean attendance = new AttendanceBean();
-
-		// ===================  リクエストパラメータの取得①　ここから======================
-		//		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-		//		AttendanceBean attendance = (AttendanceBean) request.getAttribute("attendance");
-
-		//　日付文字列をdate型で受け取る記述 
-		//		String dateString = request.getParameter("date");
-		//		LocalDate date = LocalDate.parse(dateString, formatter);
-		//		attendance.setDate(date.toString());
-		//		System.out.println(dateString);
-		//		// ===================  リクエストパラメータの取得①　ここまで======================
-
-		//		// リクエストパラメータの取得②
-		//		String start = request.getParameter("start");
-		//		String end = request.getParameter("end");
-		//		String over = request.getParameter("over");
-		//		System.out.println();
-		//
-		//		// リクエストスコープにattendanceリストをセット;
-		//		request.setAttribute("attendance", attendance);
-
 		//sessionからユーザー情報を取得
 		HttpSession session = request.getSession();
 		UserBean user = (UserBean) session.getAttribute("user");
@@ -89,8 +66,8 @@ public class RegisterCompServlet extends HttpServlet {
 			// AttendanceDAOクラス registerAttendanceメソッドにdate, start, end, overを渡しデータベース登録
 			int count = AttendanceDAO.registerAttendance(user.getUserId(), date, startTime, endTime, overTime);
 			request.setAttribute("count", count);
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
+		} catch (ClassNotFoundException |  SQLException e) {
+			request.setAttribute("error", "利用者の登録に失敗しました");
 		}
 
 		// 転送

@@ -3,7 +3,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-int count = (Integer) request.getAttribute("count");
+Integer count = (Integer) request.getAttribute("count");
+String error = (String) request.getAttribute("error");
 if (session == null || session.getAttribute("user") == null) {
 	response.sendRedirect("login.jsp");
 	return;
@@ -21,7 +22,18 @@ if (session == null || session.getAttribute("user") == null) {
 		<div class="main__registerCompBox">
 			<h2>勤怠登録完了('◇')ゞ</h2>
 			<div class="main__registerComp">
+			<%
+			if(count == null){
+			%>
+				<p class='error'><%=error%></p>
+			
+			<%
+			}else{
+			%>
 				<%=count%>件の勤怠情報を登録しました。
+			<%
+			}
+			%>
 				<form action="menu.jsp" method="post">
 					<input type="submit" name="button" value="メニュー画面へ戻る">
 				</form>
