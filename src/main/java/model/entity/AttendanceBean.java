@@ -4,8 +4,8 @@ package model.entity;
 import java.io.Serializable;
 
 public class AttendanceBean implements Serializable {
+	
 	private static final long serialVersionUID = 1L;
-
 	private int id;
 	private int userId;
 	private String date;

@@ -21,7 +21,7 @@ if (session == null || session.getAttribute("user") == null) {
 <body>
 	<div>
 		<h1>勤怠情報削除確認</h1>
-		<form action="delete-attendance-confirm" method="post">
+		<form action="delete-attendance-comp" method="post">
 			<div>
 				<label for="date">日付:</label>
 				<id="date"><%=attendance.getDate()%> <input type="hidden"

@@ -12,9 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.dao.AttendanceDAO;
+import model.entity.AttendanceBean;
 
 /**
- * Servlet implementation class DeletAttendanceServlet
+ * Servlet implementation class DeleteAttendanceCompServlet
  */
 @WebServlet("/delete-attendance-confirm")
 public class DeleteAttendanceConfirmServlet extends HttpServlet {
@@ -42,7 +43,6 @@ public class DeleteAttendanceConfirmServlet extends HttpServlet {
 			session.invalidate();
 			response.sendRedirect("login.jsp");
 		}
-
 	}
 
 	/**
@@ -55,24 +55,29 @@ public class DeleteAttendanceConfirmServlet extends HttpServlet {
 			response.sendRedirect("login.jsp"); // ユーザーがログインしていない場合、login.jspにリダイレクト
 			return;
 		}
-		// deleteAttendanceメソッドの戻り値を格納する変数
-		int count = 0;
+			
+		// リクエストのエンコーディング
+		request.setCharacterEncoding("UTF-8");
 
 		// リクエストパラメータの取得
 		int id = Integer.parseInt(request.getParameter("id"));
 
+		// attendanceデータを格納する変数
+		AttendanceBean attendance = null;
+
 		try {
-			count = AttendanceDAO.deleteAttendance(id);
+			//getAttendanceOneメソッド呼び出し、attendanceデータ取得
+			attendance = AttendanceDAO.getAttendanceOne(id);
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
 		}
 
-		// リクエストスコープにcountをセット;
-		request.setAttribute("count", count);
+		// リクエストスコープにattendanceリストをセット;
+		request.setAttribute("attendance", attendance);
 
 		// 転送
-		RequestDispatcher rd = request.getRequestDispatcher("delete-attendance-comp.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/delete-attendance-confirm.jsp");
 		rd.forward(request, response);
 	}
 

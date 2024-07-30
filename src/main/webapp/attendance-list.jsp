@@ -78,7 +78,7 @@ if (attendanceList == null) {
 
 									<td><a class="main__button"
 										href="edit-attendance?id=<%=attendanceSearch.getId()%>">編集</a></td>
-									<form action="delete-attendance" method="post">
+									<form action="delete-attendance-confirm" method="post">
 										<td><button class="main__button" type="submit">削除</button></td>
 										<input type="hidden" name="id"
 											value="<%=attendanceSearch.getId()%>">
@@ -137,7 +137,7 @@ if (attendanceList == null) {
 										<!-- 編集と削除のリンク -->
 										<td><a class="main__button"
 											href="edit-attendance?id=<%=attendance.getId()%>">編集</a></td>
-										<form action="delete-attendance" method="post">
+										<form action="delete-attendance-confirm" method="post">
 											<td><button class="main__button" type="submit">削除</button></td>
 											<input type="hidden" name="id"
 												value="<%=attendance.getId()%>">

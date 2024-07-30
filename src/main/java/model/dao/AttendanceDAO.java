@@ -77,22 +77,6 @@ public class AttendanceDAO {
 		return attendanceList;
 	}
 
-	/*	入力された情報がデータベースに登録されているかチェック*/
-	public void registerAttendance(AttendanceBean attendance) throws ClassNotFoundException, SQLException {
-		String sql = "INSERT INTO attendances (user_id, date,start_time, end_time, over_time) VALUES (?, ?, ?, ?, ?, ?)";
-
-		try (Connection con = ConnectionManager.getConnection();
-				PreparedStatement pstmt = con.prepareStatement(sql)) {
-
-			pstmt.setInt(1, attendance.getUserId());
-			pstmt.setString(2, attendance.getDate());
-			pstmt.setString(3, attendance.getStartTime());
-			pstmt.setString(4, attendance.getEndTime());
-			pstmt.setString(5, attendance.getOverTime());
-			pstmt.executeUpdate();
-		}
-	}
-
 	/**
 	 * @param date
 	 * @param userBean
