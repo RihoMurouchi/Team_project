@@ -2,39 +2,57 @@ package model.entity;
 
 import java.io.Serializable;
 
+/**
+ * @author USER
+ *
+ */
 public class UserBean implements Serializable {
 
-	//	ユーザーID
+	// ユーザーID
 	private int userId;
-	//　氏名
+	// 氏名
 	private String name;
-	//　パスワード
+	// パスワード
 	private String password;
 
-	//	デフォルトコンストラクタ
 
+	/**
+	 * デフォルトコンストラクタ
+	 * @param userId
+	 * @param name
+	 * @param password
+	 */
 	public UserBean(int userId, String name, String password) {
 		this.setUserId(userId);
 		this.setName(name);
 		this.setPassword(password);
 	}
 
+	/**
+	 * コンストラクタ
+	 */
 	public UserBean() {
 		// TODO 自動生成されたコンストラクター・スタブ
 	}
 
-	//	@return userId
+	/**
+	 * @return int
+	 */
 	public int getUserId() {
 		return userId;
 
 	}
 
-	//	@param セットするuserId
+	/**
+	 * @param userId
+	 */
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 
-	//	@return name
+	/**
+	 * @return String
+	 */
 	public String getName() {
 		return name;
 	}
@@ -44,17 +62,23 @@ public class UserBean implements Serializable {
 		this.name = name;
 	}
 
-	//	@return password
+	/**
+	 * @return String
+	 */
 	public String getPassword() {
 		return password;
 	}
 
-	//	@param セットするpassword
+	/**
+	 * @param password
+	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
-	@Override
+	/**
+	 * @Override
+	 */
 	public String toString() {
 		return "UserBean [userId=" + userId + ", name=" + name + ", password=" + password + "]";
 	}

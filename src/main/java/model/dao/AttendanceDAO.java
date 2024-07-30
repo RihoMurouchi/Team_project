@@ -26,7 +26,7 @@ public class AttendanceDAO {
 			throws ClassNotFoundException, SQLException {
 		int count = 0; // 登録件数を格納する変数
 
-		// SQL文（プレースホルダー2つ）
+		// SQL文（プレースホルダー5つ）
 		String sql = "INSERT INTO attendances(user_id, date, start_time, end_time, over_time) VALUES(?, ?, ?, ?, ?)";
 
 		// データベース接続
@@ -114,7 +114,6 @@ public class AttendanceDAO {
 			if (date != null) {
 				pstmt.setInt(1, userId);
 				pstmt.setString(2, date);
-				//System.out.println(userBean.getUserId());
 
 			}
 
@@ -181,7 +180,7 @@ public class AttendanceDAO {
 			throws ClassNotFoundException, SQLException {
 		int count = 0;// 更新件数を格納する変数
 
-		// SQL文（プレースホルダー2つ）
+		// SQL文（プレースホルダー5つ）
 		String sql = "UPDATE attendances SET date = ?, start_time = ?, end_time = ?, over_time = ? where Id = ?";
 
 		// データベース接続
