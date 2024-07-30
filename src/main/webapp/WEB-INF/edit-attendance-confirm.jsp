@@ -20,7 +20,7 @@ AttendanceBean attendance = (AttendanceBean) request.getAttribute("attendance");
 <body>
 	<div>
 		<h1>勤怠情報変更確認</h1>
-		<form action="edit-attendance-confirm" method="post">
+		<form action="edit-attendance-comp" method="post">
 			<div>
 				<label for="date">日付:</label>
 				<id="date"><%=attendance.getDate()%> <input type="hidden"

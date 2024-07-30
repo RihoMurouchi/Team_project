@@ -30,7 +30,7 @@ if (session == null || session.getAttribute("user") == null) {
 					</form>
 				</div>
 				<div class="main__logout">
-					<form action="byebye" method="post">
+					<form action="logout.jsp" method="post">
 						<input class="main__button" type="submit" name="button" value="ログアウト">
 					</form>
 				</div>

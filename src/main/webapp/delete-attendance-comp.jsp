@@ -9,7 +9,7 @@ if (session == null || session.getAttribute("user") == null) {
 }
 %>
 <%
-int count = (Integer) request.getAttribute("count");
+Integer count = (Integer) request.getAttribute("count");
 %>
 <!DOCTYPE html>
 <html>
@@ -19,7 +19,18 @@ int count = (Integer) request.getAttribute("count");
 </head>
 <body>
 
+	<%
+	if (count == 0) {
+	%>
+	<p class='error'>勤怠の削除に失敗しました。</p>
+
+	<%
+	} else {
+	%>
 	<%=count%>件の勤怠情報を削除しました。
+	<%
+	}
+	%>
 	<br>
 	<form action="attendance-list" method="post">
 		<input type="submit" name="button" value="勤怠一覧">

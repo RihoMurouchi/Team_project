@@ -59,9 +59,8 @@ public class LoginServlet extends HttpServlet {
 			UserBean user = UserDAO.checkLogin(userId, password);
 
 			//ログイン判定で分岐
-			//成功：ログイン成功でセッションにユーザ情報セット
 			if (user != null) {
-				session.setAttribute("user", user);
+				session.setAttribute("user", user);//成功：ログイン成功でセッションにユーザ情報セット
 				nextPage = "menu.jsp";
 
 			} else {

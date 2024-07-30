@@ -1,15 +1,20 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import model.dao.AttendanceDAO;
 
 /**
- * Servlet implementation class EditAttendanceCompServlet
+ * Servlet implementation class EditAttendanceConfirmServlet
  */
 @WebServlet("/edit-attendance-comp")
 public class EditAttendanceCompServlet extends HttpServlet {
@@ -28,8 +33,16 @@ public class EditAttendanceCompServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		HttpSession session = request.getSession(false);
+		if (session == null || session.getAttribute("user") == null) {
+			session.invalidate();
+			response.sendRedirect("login.jsp"); // ユーザーがログインしていない場合、login.jspにリダイレクト
+		} else {
+			//もしsessionを持っていてもGetで来た場合はとりあえずlogin.jspに戻す。
+			session.invalidate();
+			response.sendRedirect("login.jsp");
+		}
+
 	}
 
 	/**
@@ -37,25 +50,36 @@ public class EditAttendanceCompServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		//エンコーディング
-//		request.setCharacterEncoding("UTF-8");
-//
-//		String button = request.getParameter("button");
-//
-//		//				System.out.println(button);
-//
-//		//遷移先格納用変数
-//		String nextUrl = null;
-//
-//		if (button != null) {
-//			if ("勤怠一覧".equals(button)) {
-//				nextUrl = "attendance-list";//一覧サーブレットへ
-//			}
-//
-//		}
-//
-//		RequestDispatcher rd = request.getRequestDispatcher(nextUrl);
-//		rd.forward(request, response);
+		// セッションからユーザー情報を取得
+		HttpSession session = request.getSession();
+		if (session == null || session.getAttribute("user") == null) {
+			response.sendRedirect("login.jsp"); // ユーザーがログインしていない場合、login.jspにリダイレクト
+			return;
+		}
+		// editAttendanceメソッドの戻り値を格納する変数
+		int count = 0;
+
+		// リクエストパラメータの取得
+		int id = Integer.parseInt(request.getParameter("id"));
+		String date = request.getParameter("date");
+		String startTime = request.getParameter("startTime");
+		String endTime = request.getParameter("endTime");
+		String overTime = request.getParameter("overTime");
+
+		try {
+			count = AttendanceDAO.editAttendance(id, date, startTime, endTime, overTime);
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
+
+		// リクエストスコープにattendanceリストをセット;
+		request.setAttribute("count", count);
+
+		// 転送
+		RequestDispatcher rd = request.getRequestDispatcher("edit-attendance-comp.jsp");
+		rd.forward(request, response);
+
 	}
 
 }

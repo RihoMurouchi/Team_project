@@ -66,8 +66,8 @@ public class RegisterCompServlet extends HttpServlet {
 			// AttendanceDAOクラス registerAttendanceメソッドにdate, start, end, overを渡しデータベース登録
 			int count = AttendanceDAO.registerAttendance(user.getUserId(), date, startTime, endTime, overTime);
 			request.setAttribute("count", count);
-		} catch (ClassNotFoundException |  SQLException e) {
-			request.setAttribute("error", "利用者の登録に失敗しました");
+		} catch (ClassNotFoundException | SQLException e) {
+			request.setAttribute("error", "勤怠の登録に失敗しました。");
 		}
 
 		// 転送

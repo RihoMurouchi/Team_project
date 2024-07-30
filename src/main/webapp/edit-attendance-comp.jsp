@@ -7,10 +7,7 @@ if (session == null || session.getAttribute("user") == null) {
 	response.sendRedirect("login.jsp");
 	return;
 }
-int count = (Integer) request.getAttribute("count");
-%>
-<%
-// int count = (Integer) request.getAttribute("count");
+Integer count = (Integer) request.getAttribute("count");
 %>
 <!DOCTYPE html>
 <html>
@@ -20,7 +17,18 @@ int count = (Integer) request.getAttribute("count");
 </head>
 <body>
 
-	<%=count%>件の勤怠情報を変更しました。
+	<%
+	if (count == 0) {
+	%>
+	<p class='error'>勤怠の編集に失敗しました。</p>
+
+	<%
+	} else {
+	%>
+	<%=count%>件の勤怠情報を編集しました。
+	<%
+	}
+	%>
 	<br>
 	<!-- 	<a href="attendance-list">勤怠一覧</a> -->
 	<form action="attendance-list" method="post">

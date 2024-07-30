@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
 
 import model.dao.AttendanceDAO;
 import model.entity.AttendanceBean;
-import model.entity.UserBean;
 
 /**
  * Servlet implementation class DeleteAttendanceCompServlet
@@ -52,16 +51,13 @@ public class DeleteAttendanceServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
-//		if (session == null || session.getAttribute("user") == null) {
-//			response.sendRedirect("login.jsp"); // ユーザーがログインしていない場合、login.jspにリダイレクト
-//			return;
-//		}
-//			
+		if (session == null || session.getAttribute("user") == null) {
+			response.sendRedirect("login.jsp"); // ユーザーがログインしていない場合、login.jspにリダイレクト
+			return;
+		}
+			
 		// リクエストのエンコーディング
 		request.setCharacterEncoding("UTF-8");
-
-		//セッションからユーザー情報を取得
-		UserBean user = (UserBean) session.getAttribute("user");
 
 		// リクエストパラメータの取得
 		int id = Integer.parseInt(request.getParameter("id"));
@@ -79,7 +75,6 @@ public class DeleteAttendanceServlet extends HttpServlet {
 
 		// リクエストスコープにattendanceリストをセット;
 		request.setAttribute("attendance", attendance);
-		request.setAttribute("user", user);
 
 		// 転送
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/delete-attendance-confirm.jsp");

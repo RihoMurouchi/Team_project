@@ -46,17 +46,15 @@ public class MenuServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		//		HttpSession session = request.getSession();
-		//		if (session == null || session.getAttribute("user") == null) {
-		//			response.sendRedirect("login.jsp"); // ユーザーがログインしていない場合、login.jspにリダイレクト
-		//			return;
-		//		}
+		HttpSession session = request.getSession();
+		if (session == null || session.getAttribute("user") == null) {
+			response.sendRedirect("login.jsp"); // ユーザーがログインしていない場合、login.jspにリダイレクト
+			return;
+		}
 		//エンコーディング
 		request.setCharacterEncoding("UTF-8");
 
 		String button = request.getParameter("button");
-
-		//		System.out.println(button);
 
 		//遷移先格納用変数
 		String nextUrl = null;
@@ -72,6 +70,7 @@ public class MenuServlet extends HttpServlet {
 
 		}
 
+		//転送
 		RequestDispatcher rd = request.getRequestDispatcher(nextUrl);
 		rd.forward(request, response);
 	}

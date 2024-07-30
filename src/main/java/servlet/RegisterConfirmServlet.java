@@ -46,21 +46,6 @@ public class RegisterConfirmServlet extends HttpServlet {
 		// attendanceデータを格納する変数
 		AttendanceBean attendance = new AttendanceBean();
 
-		// =================== 日付文字列をdate型で受け取る記述 ここから======================
-//		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-//
-//		// リクエストパラメータの取得(date)
-//		String dateString = request.getParameter("date");
-//		if (dateString != null && !dateString.isEmpty()) {
-//			try {
-//				LocalDate date = LocalDate.parse(dateString, formatter);
-//				attendance.setDate(date.toString());
-//			} catch (DateTimeParseException e) {
-//				e.printStackTrace();
-//			}
-//		}
-		// =================== 日付文字列をdate型で受け取る記述 ここまで======================
-
 		// リクエストパラメータの取得
 		attendance.setDate(request.getParameter("date"));
 		attendance.setStartTime(request.getParameter("start"));

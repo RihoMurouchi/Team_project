@@ -34,7 +34,7 @@ public class EditAttendanceServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		//テキストエリア内に初期値として勤怠情報を表示するための処理 ==============================
+		// =============== テキストエリア内に初期値として勤怠情報を表示するための処理 ===============
 		// リクエストのエンコーディング
 		request.setCharacterEncoding("UTF-8");
 
@@ -72,6 +72,8 @@ public class EditAttendanceServlet extends HttpServlet {
 			response.sendRedirect("login.jsp"); // ユーザーがログインしていない場合、login.jspにリダイレクト
 			return;
 		}
+		
+		// =============== 確認画面へ勤怠情報を表示するための処理 ===============
 		// リクエストのエンコーディング
 		request.setCharacterEncoding("UTF-8");
 

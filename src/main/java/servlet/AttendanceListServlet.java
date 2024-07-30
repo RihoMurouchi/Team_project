@@ -68,10 +68,6 @@ public class AttendanceListServlet extends HttpServlet {
 		//userBySearchAttendanceメソッドの List<AttendanceBean>型 の戻り値を格納する変数を用意、初期値は null。
 		List<AttendanceBean> searchList = null;
 
-		//検索ボタン押下時にuserBySearchAttendanceの処理を行う
-		//リクエストスコープにSearchlistをセット
-		//attendance-list.jspにリダイレクト
-
 		//リクエストのエンコーディングをセット
 		request.setCharacterEncoding("UTF-8");
 
@@ -91,52 +87,39 @@ public class AttendanceListServlet extends HttpServlet {
 		// リクエストスコープにattendanceリストをセット
 		request.setAttribute("attendanceList", attendanceList);
 
-		// attendanceList.jspのattendance一覧画面へ転送
-//		RequestDispatcher rd = request.getRequestDispatcher("attendance-list.jsp");
-//		rd.forward(request, response);
-//		return;
-
 		//ボタン押下時に中身が空でなければ以下の処理が始まる
 		if (searchButton != null) {
 			//value="検索"なら以下の処理を行う
 			if ("検索".equals(searchButton)) {
-				System.out.println(searchButton);
 				try {
 					searchList = AttendanceDAO.userBySearchAttendance(user.getUserId(), date);
 					if (searchList == null || searchList.size() == 0) {
 						error = "勤怠情報が登録されていません";
-						System.out.println(error);
 						request.setAttribute("from", from);
 						request.setAttribute("error", error);
 						RequestDispatcher rd = request.getRequestDispatcher("attendance-list.jsp");
 						rd.forward(request, response);
 						return;
-					}else {
+					} else {
 						request.setAttribute("from", from);
-						System.out.println(from);
 						// リクエストスコープにsearchListをセット
 						request.setAttribute("searchList", searchList);
-						System.out.println(searchList);
-						
+
 					}
-				
+
 				} catch (ClassNotFoundException | SQLException e) {
 					// TODO 自動生成された catch ブロック
 					e.printStackTrace();
 				}
-				//			request.setAttribute("searchList", searchList);
-				//			response.sendRedirect("attendance-list.jsp"); // ユーザーがログインしていない場合、login.jspにリダイレクト
-				//			return;
-				//対象日付がない場合はエラーメッセージ
+
 			}
-			/*request.setAttribute("error", error);
-			response.sendRedirect("attendance-list.jsp"); // ユーザーがログインしていない場合、login.jspにリダイレクト
-			return;*/
+
 		}
+		// attendanceList.jsp 勤怠一覧画面へ転送
 		RequestDispatcher rd = request.getRequestDispatcher("attendance-list.jsp");
 		rd.forward(request, response);
 		return;
 
 	}
-	
+
 }
