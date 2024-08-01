@@ -7,10 +7,10 @@ AttendanceBean attendance = (AttendanceBean) request.getAttribute("attendance");
 UserBean user = (UserBean) session.getAttribute("user");
 %>
 <%
-	if (session == null || session.getAttribute("user") == null) {
-		response.sendRedirect("login.jsp");
-		return;
-	}
+if (session == null || session.getAttribute("user") == null) {
+	response.sendRedirect("login.jsp");
+	return;
+}
 %>
 <!DOCTYPE html>
 <html>
@@ -23,23 +23,25 @@ UserBean user = (UserBean) session.getAttribute("user");
 		<h1>勤怠編集</h1>
 		<form action="edit-attendance" method="post">
 			<div>
-				<label for="date">date</label>
-				<input type="date" name="date" id="date" value='<%=attendance.getDate()%>' required>
-				<label for="startTime">startTime</label>
-				<input type="time" name="startTime" id="startTime" value='<%=attendance.getStartTime()%>' required>
-				<label for="endTime">endTime</label>
-				<input type="time" name="endTime" id="endTime" value='<%=attendance.getEndTime()%>' required>
-				<label for="overTime">overTime</label>
-				<input type="time" name="overTime" id="overTime" value='<%=attendance.getOverTime()%>' required>
+				<label for="date">date</label> <input type="date" name="date"
+					id="date" value='<%=attendance.getDate()%>' required> <label
+					for="startTime">startTime</label> <input type="time"
+					name="startTime" id="startTime"
+					value='<%=attendance.getStartTime()%>' required> <label
+					for="endTime">endTime</label> <input type="time" name="endTime"
+					id="endTime" value='<%=attendance.getEndTime()%>' required>
+				<label for="overTime">overTime</label> <input type="time"
+					name="overTime" id="overTime" value='<%=attendance.getOverTime()%>'
+					required>
 			</div>
 			<div>
 				<button type="submit">変更</button>
 				<input type="hidden" name="id" value="<%=attendance.getId()%>">
 			</div>
 		</form>
-		<form action="attendance-list" method="post">
-			<input type="submit" name="button" value="戻る">
-		</form>
+		<div>
+			<button type="button" onclick="history.back()">戻る</button>
+		</div>
 	</div>
 </body>
 </html>

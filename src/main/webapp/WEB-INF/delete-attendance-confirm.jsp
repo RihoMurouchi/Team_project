@@ -48,9 +48,9 @@ if (session == null || session.getAttribute("user") == null) {
 				<input type="hidden" name="id" value="<%=attendance.getId()%>">
 			</div>
 		</form>
-		<form action="attendance-list" method="post">
-			<input type="submit" name="button" value="戻る">
-		</form>
+		<div>
+			<button type="button" onclick="history.back()">戻る</button>
+		</div>
 	</div>
 
 </body>
