@@ -22,7 +22,7 @@ Integer count = (Integer) request.getAttribute("count");
 	<%
 	if (count == 0) {
 	%>
-	<p class='error'>勤怠の削除に失敗しました。</p>
+	<p class='error'>すでに削除済みの勤怠情報です。</p>
 
 	<%
 	} else {
