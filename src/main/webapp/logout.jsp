@@ -1,4 +1,4 @@
-<%@page import="model.entity.UserBean"%>
+<%@page import="model.entity.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%UserBean user = (UserBean)session.getAttribute("user"); %>

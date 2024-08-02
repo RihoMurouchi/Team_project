@@ -55,6 +55,7 @@ public class LoginServlet extends HttpServlet {
 		try {
 			//セッションの開始
 			HttpSession session = request.getSession();
+//			session.setMaxInactiveInterval(20);
 			String errorMessage;
 			UserBean user = UserDAO.checkLogin(userId, password);
 

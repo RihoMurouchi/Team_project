@@ -56,7 +56,6 @@ public class AttendanceListServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		UserBean user = (UserBean) session.getAttribute("user");
 
-		//以下の記述は必要か？
 		if (session == null || user == null) {//セッションがl切れたら
 			response.sendRedirect("login.jsp"); // ユーザーがログインしていない場合、login.jspにリダイレクト
 			return;
@@ -66,55 +65,46 @@ public class AttendanceListServlet extends HttpServlet {
 		List<AttendanceBean> attendanceList = null;
 
 		//userBySearchAttendanceメソッドの List<AttendanceBean>型 の戻り値を格納する変数を用意、初期値は null。
-		List<AttendanceBean> searchList = null;
+		//		List<AttendanceBean> searchList = null;
 
 		//リクエストのエンコーディングをセット
 		request.setCharacterEncoding("UTF-8");
 
 		String searchButton = request.getParameter("searchButton");
 		String date = request.getParameter("date");
-		String from = "search";
-		String error;
-
-		//attendanceDAOクラスのuserByGetAttendanceListメソッド呼び出し、attendanceリスト取得
-		try {
-			attendanceList = AttendanceDAO.userByGetAttendanceList(user);
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO 自動生成された catch ブロック
-			e.printStackTrace();
-		}
-
-		// リクエストスコープにattendanceリストをセット
-		request.setAttribute("attendanceList", attendanceList);
+		//		String from = "search";
+		String error = null;
 
 		//ボタン押下時に中身が空でなければ以下の処理が始まる
-		if (searchButton != null) {
+		if (searchButton == null) {
+			searchButton = "";
+		}
+		
+		try {
 			//value="検索"なら以下の処理を行う
 			if ("検索".equals(searchButton)) {
-				try {
-					searchList = AttendanceDAO.userBySearchAttendance(user.getUserId(), date);
-					if (searchList == null || searchList.size() == 0) {
-						error = "勤怠情報が登録されていません";
-						request.setAttribute("from", from);
-						request.setAttribute("error", error);
-						RequestDispatcher rd = request.getRequestDispatcher("attendance-list.jsp");
-						rd.forward(request, response);
-						return;
-					} else {
-						request.setAttribute("from", from);
-						// リクエストスコープにsearchListをセット
-						request.setAttribute("searchList", searchList);
+				attendanceList = AttendanceDAO.userBySearchAttendance(user.getUserId(), date);
+			} else {
+				//attendanceDAOクラスのuserByGetAttendanceListメソッド呼び出し、attendanceリスト取得
+				attendanceList = AttendanceDAO.userByGetAttendanceList(user);
+			}
 
-					}
-
-				} catch (ClassNotFoundException | SQLException e) {
-					// TODO 自動生成された catch ブロック
-					e.printStackTrace();
-				}
+			if (attendanceList.size() == 0) {
+				error = "勤怠情報が登録されていません";
+				//					request.setAttribute("from", from);
 
 			}
 
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+			error = "予期せぬエラーが発生しました。";
+			//				request.setAttribute("from", from);
 		}
+
+		// リクエストスコープにattendanceリストをセット
+		request.setAttribute("error", error);
+		request.setAttribute("attendanceList", attendanceList);
 		// attendanceList.jsp 勤怠一覧画面へ転送
 		RequestDispatcher rd = request.getRequestDispatcher("attendance-list.jsp");
 		rd.forward(request, response);

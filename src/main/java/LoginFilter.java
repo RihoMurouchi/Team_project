@@ -1,4 +1,5 @@
 
+
 import java.io.IOException;
 
 import javax.servlet.Filter;
@@ -48,11 +49,8 @@ public class LoginFilter extends HttpFilter implements Filter {
 
 		// 未ログインの場合、ログイン画面にリダイレクト
 		if (session == null || session.getAttribute("user") == null) {
-			res.sendRedirect("login.jsp"); // ユーザーがログインしていない場合、login.jspにリダイレクト
-		} else {
-			//もしsessionを持っていてもGetで来た場合はとりあえずlogin.jspに戻す。
 			session.invalidate();
-			res.sendRedirect("login.jsp");
+			res.sendRedirect("login.jsp"); // ユーザーがログインしていない場合、login.jspにリダイレクト
 		}
 		// pass the request along the filter chain
 		chain.doFilter(request, response);
