@@ -21,7 +21,7 @@ Integer count = (Integer) request.getAttribute("count");
 	<%
 	if (count == 0) {
 	%>
-	<p class='err'>勤怠の編集に失敗しました。</p>
+	<p class='err'>編集に失敗しました。勤怠情報を再度ご確認ください。</p>
 
 	<%
 	} else {
