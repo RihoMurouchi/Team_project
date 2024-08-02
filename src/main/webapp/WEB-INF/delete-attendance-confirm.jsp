@@ -16,6 +16,7 @@ if (session == null || session.getAttribute("user") == null) {
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="css/main.css">
 <title>勤怠情報削除画面</title>
 </head>
 <body>
@@ -44,12 +45,12 @@ if (session == null || session.getAttribute("user") == null) {
 					type="hidden" name="overTime" value="<%=attendance.getOverTime()%>">
 			</div>
 			<div>
-				<button type="submit">確定</button>
+				<button class="main__button" type="submit">確定</button>
 				<input type="hidden" name="id" value="<%=attendance.getId()%>">
 			</div>
 		</form>
 		<div>
-			<button type="button" onclick="history.back()">戻る</button>
+			<button class="main__button" type="button" onclick="history.back()">戻る</button>
 		</div>
 	</div>
 

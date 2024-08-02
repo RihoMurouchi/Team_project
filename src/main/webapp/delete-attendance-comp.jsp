@@ -15,6 +15,7 @@ Integer count = (Integer) request.getAttribute("count");
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="css/main.css">
 <title>勤怠削除完了画面</title>
 </head>
 <body>
@@ -22,7 +23,7 @@ Integer count = (Integer) request.getAttribute("count");
 	<%
 	if (count == 0) {
 	%>
-	<p class='error'>すでに削除済みの勤怠情報です。</p>
+	<p class='err'>すでに削除済みの勤怠情報です。</p>
 
 	<%
 	} else {
@@ -33,7 +34,7 @@ Integer count = (Integer) request.getAttribute("count");
 	%>
 	<br>
 	<form action="attendance-list" method="post">
-		<input type="submit" name="button" value="勤怠一覧">
+		<input class="main__button" type="submit" name="button" value="勤怠一覧">
 	</form>
 </body>
 </html>

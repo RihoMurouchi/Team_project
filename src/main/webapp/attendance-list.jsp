@@ -50,7 +50,7 @@ if (attendanceList == null) {
 					if ("search".equals(from)) {
 					%>
 					<%if (error != null || searchList.isEmpty()) {%>
-					<p class="error"><%=error%></p>
+					<p class="err"><%=error%></p>
 					<%
 					} else {
 					%>
@@ -76,13 +76,14 @@ if (attendanceList == null) {
 									<td><%=attendanceSearch.getEndTime()%></td>
 									<td><%=attendanceSearch.getOverTime()%></td>
 
-									<td><a class="main__button"
-										href="edit-attendance?id=<%=attendanceSearch.getId()%>">編集</a></td>
+									<td><div class="main__button">
+											<a href="edit-attendance?id=<%=attendanceSearch.getId()%>">編集</a></td>
 									<form action="delete-attendance-confirm" method="post">
-										<td><button class="main__button" type="submit">削除</button></td>
+										<td><button class="main__button1" type="submit">削除</button></td>
 										<input type="hidden" name="id"
 											value="<%=attendanceSearch.getId()%>">
 									</form>
+									</div>
 								</tr>
 								<%
 								}
@@ -103,7 +104,7 @@ if (attendanceList == null) {
 						} else if (attendanceList != null) {
 						%>
 						<%if (attendanceList.size() == 0) {%>
-						<p class="error">勤怠情報は登録されていません。</p>
+						<p class="err">勤怠情報は登録されていません。</p>
 						<div class="main__register">
 							<form action="register-attendance.jsp" method="post">
 								<input class="main__button" type="submit" name="button"

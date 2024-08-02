@@ -15,6 +15,7 @@ AttendanceBean attendance = (AttendanceBean) request.getAttribute("attendance");
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="css/main.css">
 <title>勤怠情報変更確認画面</title>
 </head>
 <body>
@@ -43,9 +44,9 @@ AttendanceBean attendance = (AttendanceBean) request.getAttribute("attendance");
 					type="hidden" name="overTime" value="<%=attendance.getOverTime()%>">
 			</div>
 			<div>
-				<button type="submit">確定</button>
+				<button class="main__button" type="submit">確定</button>
 				<input type="hidden" name="id" value="<%=attendance.getId()%>">
-				<a href="edit-attendance?id=<%=attendance.getId()%>">戻る</a>
+				<a class="main__button" href="edit-attendance?id=<%=attendance.getId()%>">戻る</a>
 			</div>
 		</form>
 	</div>

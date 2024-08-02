@@ -16,6 +16,7 @@ if (session == null || session.getAttribute("user") == null) {
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="css/main.css">
 <title>勤怠編集画面</title>
 </head>
 <body>
@@ -35,12 +36,12 @@ if (session == null || session.getAttribute("user") == null) {
 					required>
 			</div>
 			<div>
-				<button type="submit">変更</button>
+				<button class="main__button" type="submit">変更</button>
 				<input type="hidden" name="id" value="<%=attendance.getId()%>">
 			</div>
 		</form>
 		<div>
-			<button type="button" onclick="history.back()">戻る</button>
+			<button class="main__button" type="button" onclick="history.back()">戻る</button>
 		</div>
 	</div>
 </body>
