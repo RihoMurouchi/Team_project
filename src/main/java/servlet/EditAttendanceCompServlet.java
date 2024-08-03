@@ -58,6 +58,7 @@ public class EditAttendanceCompServlet extends HttpServlet {
 		}
 		// editAttendanceメソッドの戻り値を格納する変数
 		int count = 0;
+		String error = null;
 
 		// リクエストパラメータの取得
 		int id = Integer.parseInt(request.getParameter("id"));
@@ -68,13 +69,17 @@ public class EditAttendanceCompServlet extends HttpServlet {
 
 		try {
 			count = AttendanceDAO.editAttendance(id, date, startTime, endTime, overTime);
+			if (count == 0) {
+				error = "編集に失敗しました。勤怠情報を再度ご確認ください。";
+			}
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
+			error = "予期せぬエラーが発生しました。";
 		}
 
 		// リクエストスコープにattendanceリストをセット;
 		request.setAttribute("count", count);
+		request.setAttribute("error", error);
 
 		// 転送
 		RequestDispatcher rd = request.getRequestDispatcher("edit-attendance-comp.jsp");
