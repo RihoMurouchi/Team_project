@@ -54,6 +54,10 @@ public class RegisterCompServlet extends HttpServlet {
 		// リクエストのエンコーディング
 		request.setCharacterEncoding("UTF-8");
 
+		// registerAttendanceメソッドの戻り値を格納する変数
+		int count = 0;
+		String error = null;
+
 		//sessionからユーザー情報を取得
 		HttpSession session = request.getSession();
 		UserBean user = (UserBean) session.getAttribute("user");
@@ -64,11 +68,19 @@ public class RegisterCompServlet extends HttpServlet {
 
 		try {
 			// AttendanceDAOクラス registerAttendanceメソッドにdate, start, end, overを渡しデータベース登録
-			int count = AttendanceDAO.registerAttendance(user.getUserId(), date, startTime, endTime, overTime);
-			request.setAttribute("count", count);
+			count = AttendanceDAO.registerAttendance(user.getUserId(), date, startTime, endTime, overTime);
+			if (count == 0) {
+				error = "勤怠の登録に失敗しました。";
+			}
+
 		} catch (ClassNotFoundException | SQLException e) {
-			request.setAttribute("error", "勤怠の登録に失敗しました。");
+			e.printStackTrace();
+			error = "予期せぬエラーが発生しました。";
 		}
+
+		// リクエストスコープにセット;
+		request.setAttribute("count", count);
+		request.setAttribute("error", error);
 
 		// 転送
 		RequestDispatcher rd = request.getRequestDispatcher("register-comp.jsp");

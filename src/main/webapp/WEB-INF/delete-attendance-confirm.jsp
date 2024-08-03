@@ -57,6 +57,5 @@ String error = (String) request.getAttribute("error");
 			</form>
 		</div>
 	</div>
-
 </body>
 </html>

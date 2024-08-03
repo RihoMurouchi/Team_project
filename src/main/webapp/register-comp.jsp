@@ -1,14 +1,10 @@
 <%@page import="model.entity.*"%>
 <%@page import="model.dao.*"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 Integer count = (Integer) request.getAttribute("count");
 String error = (String) request.getAttribute("error");
-if (session == null || session.getAttribute("user") == null) {
-	response.sendRedirect("login.jsp");
-	return;
-}%>
+%>
 
 
 <!DOCTYPE html>
@@ -22,16 +18,16 @@ if (session == null || session.getAttribute("user") == null) {
 		<div class="main__registerCompBox">
 			<h2>勤怠登録完了('◇')ゞ</h2>
 			<div class="main__registerComp">
-			<%
-			if(count == null){
+				<%
+			if(count == null || count == 0){
 			%>
 				<p class='error'><%=error%></p>
-			
-			<%
+
+				<%
 			}else{
 			%>
 				<%=count%>件の勤怠情報を登録しました。
-			<%
+				<%
 			}
 			%>
 				<form action="menu.jsp" method="post">

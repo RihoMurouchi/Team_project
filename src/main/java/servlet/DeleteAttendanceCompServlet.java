@@ -72,7 +72,7 @@ public class DeleteAttendanceCompServlet extends HttpServlet {
 			error = "予期せぬエラーが発生しました。";
 		}
 
-		// リクエストスコープにcountをセット;
+		// リクエストスコープにセット;
 		request.setAttribute("count", count);
 		request.setAttribute("error", error);
 
