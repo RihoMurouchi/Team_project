@@ -52,11 +52,11 @@ public class LoginServlet extends HttpServlet {
 
 		//checkLoginメソッドの呼び出し
 		String nextPage = "login.jsp";
+		String error = null;
 		try {
 			//セッションの開始
 			HttpSession session = request.getSession();
 //			session.setMaxInactiveInterval(20);
-			String errorMessage;
 			UserBean user = UserDAO.checkLogin(userId, password);
 
 			//ログイン判定で分岐
@@ -66,14 +66,19 @@ public class LoginServlet extends HttpServlet {
 
 			} else {
 				//失敗：ログイン失敗でエラーメッセージをリクエストスコープにセット
-				errorMessage = "ログイン失敗しました。";
-				request.setAttribute("errorMessage", errorMessage);
+				error = "ログイン失敗しました。";
+				request.setAttribute("errorMessage", error);
 
 			}
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
+			error = "ログイン失敗しました。";
+			
 		}
+		
+		// リクエストスコープにattendanceリストをセット
+		request.setAttribute("error", error);
+		
 		//転送
 		RequestDispatcher rd = request.getRequestDispatcher(nextPage);
 		rd.forward(request, response);

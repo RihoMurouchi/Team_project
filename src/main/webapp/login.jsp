@@ -1,7 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-String errorMessage = (String) request.getAttribute("errorMessage");
+String error = (String) request.getAttribute("error");
 %>
 <!DOCTYPE html>
 <html>
@@ -16,9 +15,9 @@ String errorMessage = (String) request.getAttribute("errorMessage");
 			(^^)＜今日も1日ご安全に！
 			<h1>ログイン</h1>
 			<%
-			if (errorMessage != null) {
+			if (error != null) {
 			%>
-			<p class="err"><%=errorMessage%></p>
+			<p class="err"><%=error%></p>
 			<%
 			}
 			%>
@@ -27,8 +26,8 @@ String errorMessage = (String) request.getAttribute("errorMessage");
 				<label for="userId">ユーザーID</label><br />
 				<!------------------- pattern属性で数字のみの入力を許可し、title属性で説明を追加 ---------------------->
 				<input class="main__textBox" type="text" required name="userId" id="userId" pattern="\d*"
-					title="数字のみを入力してください。" /><br /> <label for="password">パスワード</label><br />
-				<input class="main__textBox" type="password" required name="password" id="password" /><br />
+					title="数字のみを入力してください。" /><br /> <label for="password">パスワード</label><br /> <input
+					class="main__textBox" type="password" required name="password" id="password" /><br />
 				<button class="main__button" type="submit">ログイン</button>
 			</form>
 		</div>
