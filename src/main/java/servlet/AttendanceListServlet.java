@@ -55,11 +55,12 @@ public class AttendanceListServlet extends HttpServlet {
 		// セッションからユーザー情報を取得
 		HttpSession session = request.getSession();
 		UserBean user = (UserBean) session.getAttribute("user");
+		
 
-		if (session == null || user == null) {
-			response.sendRedirect("login.jsp"); //セッションがl切れたらlogin.jspにリダイレクト
-			return;
-		}
+//		if (session == null || user == null) {
+//			response.sendRedirect("login.jsp"); //セッションがl切れたらlogin.jspにリダイレクト
+//			return;
+//		}
 
 		// attendanceリストを格納する変数
 		List<AttendanceBean> attendanceList = null;
