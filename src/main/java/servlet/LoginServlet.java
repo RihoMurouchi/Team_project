@@ -72,7 +72,7 @@ public class LoginServlet extends HttpServlet {
 			}
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
-			error = "ログイン失敗しました。";
+			error = "予期せぬエラーが発生しました。";
 			
 		}
 		
