@@ -1,75 +1,56 @@
 @charset "UTF-8";
 
 /* 共通スタイルは外に書く */
-@media screen and (min-width:768px) and (max-width:1024px){}
+@media screen and (min-width:768px) and (max-width:1024px) {
 
-* {
-  background-color: rgb(255, 255, 255);
+	* {
+		background-color: rgb(255, 255, 255);
+		text-align: center;
+	}
+
+/*	.main {*/
+/*		text-align: center;*/
+/*	}*/
+
+	/*.Wrapper {*/
+	/*  text-align: center;*/
+	/*}*/
+
+	/* ================ エラーメッセージ ================ */
+	.err {
+		color: red;
+	}
+
+	/* ================ 入力フォーム ================ */
+	.main__textBox {
+		background-color: white;
+		padding: 8px 16px;
+	}
+
+
+	/* ================ ボタン ================ */
+	.main__button {
+		border: 0;
+		border-radius: 5px;
+		text-decoration: none;
+		/*  background: rgb(0, 128, 128);*/
+		color: #fff;
+		padding: 8px 16px;
+		margin-top: 10px;
+		font-size: 16px;
+		cursor: pointer;
+		background: linear-gradient(to bottom, #00acee, rgb(0, 128, 128));
+		/*   display: -webkit-flex;*/
+		/*    display: flex;*/
+	}
+
+	.main__button:hover {
+		background: #1d49aa;
+	}
+
+	/* ================ 勤怠一覧 ================ */
+
+	th {
+		border: 1px solid #000;
+	}
 }
-
-.main {
-  text-align: center;
-}
-
-/*.Wrapper {*/
-/*  text-align: center;*/
-/*}*/
-
-/* ================ エラーメッセージ ================ */
-.err{
-  color: red;
-}
-
-/* ================ 入力フォーム ================ */
-.main__textBox {
-  background-color: white;
-  padding: 8px 16px;
-}
-
-
-/* ================ ボタン ================ */
-.main__button {
-  border: 0;
-  border-radius: 5px;
-  text-decoration: none;
-/*  background: rgb(0, 128, 128);*/
-  color: #fff;
-  padding: 8px 16px;
-  margin-top: 10px;
-  font-size: 16px;
-  cursor: pointer;
-  background: linear-gradient(to bottom, #00acee, rgb(0, 128, 128));
-/*   display: -webkit-flex;*/
-/*    display: flex;*/
-}
-
-.main__button:hover {
-  background: #1d49aa;
-}
-
-/* ================ 勤怠一覧 ================ */
-
-th {
-  border: 1px solid #000;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

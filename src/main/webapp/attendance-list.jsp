@@ -37,8 +37,8 @@ String error = (String) request.getAttribute("error");
 
 				<p class="err"><%=error%></p>
 
-				<div class="footer">
-					<a class="main__button" href="menu.jsp">メニュー画面へ戻る</a>
+				<div class="main__menuButton">
+					<a class="main__menuButton" href="menu.jsp">メニュー画面へ戻る</a>
 				</div>
 				<%} else if (attendanceList.size() == 0) {%>
 
