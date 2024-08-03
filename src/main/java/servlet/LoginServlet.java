@@ -57,7 +57,7 @@ public class LoginServlet extends HttpServlet {
 			//セッションの開始
 			HttpSession session = request.getSession();
 			//セッションタイムアウトの設定 10秒
-			session.setMaxInactiveInterval(10);
+//			session.setMaxInactiveInterval(10);
 			UserBean user = UserDAO.checkLogin(userId, password);
 
 			//ログイン判定で分岐
@@ -68,7 +68,6 @@ public class LoginServlet extends HttpServlet {
 			} else {
 				//失敗：ログイン失敗でエラーメッセージをリクエストスコープにセット
 				error = "ログイン失敗しました。";
-				request.setAttribute("errorMessage", error);
 
 			}
 		} catch (ClassNotFoundException | SQLException e) {

@@ -49,10 +49,9 @@ public class LoginFilter extends HttpFilter implements Filter {
 		// ユーザーがログインしていないまたは、セッションが切れている場合、login.jspにリダイレクト
 		if (session == null || session.getAttribute("user") == null) {
 			res.sendRedirect("login.jsp");
-		} else {
-			// ログイン済みの場合はフィルターチェーンを継続
-			chain.doFilter(request, response);
 		}
+		// ログイン済みの場合はフィルターチェーンを継続
+		chain.doFilter(request, response);
 
 	}
 
