@@ -34,17 +34,28 @@ String error = (String) request.getAttribute("error");
 				</div>
 				<!-- 検索結果の表示 -->
 				<%if (attendanceList == null) {%>
+
 				<p class="err"><%=error%></p>
+
+				<div class="footer">
+					<a class="main__button" href="menu.jsp">メニュー画面へ戻る</a>
+				</div>
 				<%} else if (attendanceList.size() == 0) {%>
+
 				<p class="err"><%=error%></p>
 				<div class="main__register">
 					<form action="register-attendance.jsp" method="post">
 						<input class="main__button" type="submit" name="button" value="勤怠登録"><br>
 					</form>
 				</div>
+				<form action="attendance-list" method="post">
+					<input class="main__button" type="submit" name="button" value="勤怠一覧へ">
+				</form>
+
 				<%
 				} else {
 				%>
+
 				<div class="main__listBox">
 					<table>
 						<thead>
@@ -76,16 +87,15 @@ String error = (String) request.getAttribute("error");
 							<%
 							}
 							%>
+							<div class="footer">
+								<a class="main__button" href="menu.jsp">メニュー画面へ戻る</a>
+							</div>
 							<%
 							}
 							%>
 						</tbody>
 					</table>
-					<div>
-						<button class="main__button" type="button" onclick="history.back()">戻る</button>
-					</div>
 				</div>
-
 			</div>
 		</div>
 	</main>
