@@ -56,30 +56,26 @@ public class AttendanceListServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		UserBean user = (UserBean) session.getAttribute("user");
 
-		if (session == null || user == null) {//セッションがl切れたら
-			response.sendRedirect("login.jsp"); // ユーザーがログインしていない場合、login.jspにリダイレクト
+		if (session == null || user == null) {
+			response.sendRedirect("login.jsp"); //セッションがl切れたらlogin.jspにリダイレクト
 			return;
 		}
 
 		// attendanceリストを格納する変数
 		List<AttendanceBean> attendanceList = null;
 
-		//userBySearchAttendanceメソッドの List<AttendanceBean>型 の戻り値を格納する変数を用意、初期値は null。
-		//		List<AttendanceBean> searchList = null;
-
 		//リクエストのエンコーディングをセット
 		request.setCharacterEncoding("UTF-8");
 
 		String searchButton = request.getParameter("searchButton");
 		String date = request.getParameter("date");
-		//		String from = "search";
 		String error = null;
 
 		//ボタン押下時に中身が空でなければ以下の処理が始まる
 		if (searchButton == null) {
 			searchButton = "";
 		}
-		
+
 		try {
 			//value="検索"なら以下の処理を行う
 			if ("検索".equals(searchButton)) {
@@ -91,24 +87,21 @@ public class AttendanceListServlet extends HttpServlet {
 
 			if (attendanceList.size() == 0) {
 				error = "勤怠情報が登録されていません";
-				//					request.setAttribute("from", from);
 
 			}
 
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
 			error = "予期せぬエラーが発生しました。";
-			//				request.setAttribute("from", from);
 		}
 
 		// リクエストスコープにattendanceリストをセット
 		request.setAttribute("error", error);
 		request.setAttribute("attendanceList", attendanceList);
+
 		// attendanceList.jsp 勤怠一覧画面へ転送
 		RequestDispatcher rd = request.getRequestDispatcher("attendance-list.jsp");
 		rd.forward(request, response);
-		return;
 
 	}
 

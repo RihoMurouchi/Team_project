@@ -3,10 +3,8 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<%//検索条件、検索結果を取得%>
 <%
 List<AttendanceBean> attendanceList = (List) request.getAttribute("attendanceList");
-String from = (String) request.getAttribute("from");
 String error = (String) request.getAttribute("error");
 %>
 
@@ -35,7 +33,9 @@ String error = (String) request.getAttribute("error");
 					</form>
 				</div>
 				<!-- 検索結果の表示 -->
-				<%if (attendanceList == null || attendanceList.size() == 0) {%>
+				<%if (attendanceList == null) {%>
+				<p class="err"><%=error%></p>
+				<%} else if (attendanceList.size() == 0) {%>
 				<p class="err"><%=error%></p>
 				<div class="main__register">
 					<form action="register-attendance.jsp" method="post">
@@ -81,11 +81,9 @@ String error = (String) request.getAttribute("error");
 							%>
 						</tbody>
 					</table>
-					<div class="footer">
-						<a class="main__button" href="menu.jsp">メニュー画面へ戻る</a>
+					<div>
+						<button class="main__button" type="button" onclick="history.back()">戻る</button>
 					</div>
-
-
 				</div>
 
 			</div>

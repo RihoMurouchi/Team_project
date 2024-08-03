@@ -64,16 +64,18 @@ public class DeleteAttendanceConfirmServlet extends HttpServlet {
 
 		// attendanceデータを格納する変数
 		AttendanceBean attendance = null;
+		String error = null;
 
 		try {
 			//getAttendanceOneメソッド呼び出し、attendanceデータ取得
 			attendance = AttendanceDAO.getAttendanceOne(id);
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
+			error = "予期せぬエラーが発生しました。";
 		}
 
 		// リクエストスコープにattendanceリストをセット;
+		request.setAttribute("error", error);
 		request.setAttribute("attendance", attendance);
 
 		// 転送
