@@ -17,7 +17,7 @@ if (session == null || session.getAttribute("user") == null) {
 	<%-- 	<%@ include file="header.jsp"%> --%>
 	<main>
 		<div class="main">
-			<div class="main__box">
+			<div class="wrapper">
 				<h2>めにゅう(・∀・)</h2>
 				<div class="main__menu">
 					<form action="menu" method="post">

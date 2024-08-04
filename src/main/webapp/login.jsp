@@ -13,7 +13,7 @@ String error = (String) request.getAttribute("error");
 <body>
 	<main>
 		<div class="main">
-			<div class="main__box">
+			<div class="wrapper">
 				(^^)＜今日も1日ご安全に！
 				<h1>ログイン</h1>
 				<%
