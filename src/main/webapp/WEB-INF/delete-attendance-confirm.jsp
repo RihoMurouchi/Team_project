@@ -49,6 +49,8 @@ String error = (String) request.getAttribute("error");
 			</div>
 		</form>
 		<%
+		p
+
 		}
 		%>
 		<div>

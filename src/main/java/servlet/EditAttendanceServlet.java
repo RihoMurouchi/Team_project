@@ -9,7 +9,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import model.dao.AttendanceDAO;
 import model.entity.AttendanceBean;
@@ -43,7 +42,7 @@ public class EditAttendanceServlet extends HttpServlet {
 
 		// attendanceデータを格納する変数
 		AttendanceBean attendance = null;
-		
+
 		String error = null;
 
 		try {
@@ -69,13 +68,6 @@ public class EditAttendanceServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// セッションを取得し、存在しない場合はnullを返す
-		HttpSession session = request.getSession(false);
-		if (session == null || session.getAttribute("user") == null) {
-			response.sendRedirect("login.jsp"); // ユーザーがログインしていない場合、login.jspにリダイレクト
-			return;
-		}
-		
 		// =============== 確認画面へ勤怠情報を表示するための処理 ===============
 		// リクエストのエンコーディング
 		request.setCharacterEncoding("UTF-8");

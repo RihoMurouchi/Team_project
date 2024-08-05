@@ -4,19 +4,19 @@ import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpFilter;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
  * Servlet Filter implementation class LoginFilter
  */
-@WebFilter("/Attendance/*")
+@WebFilter("/*")
 public class LoginFilter extends HttpFilter implements Filter {
 
 	/**
@@ -41,16 +41,19 @@ public class LoginFilter extends HttpFilter implements Filter {
 			throws IOException, ServletException {
 		// HttpServletに変換
 		HttpServletRequest req = (HttpServletRequest) request;
-		HttpServletResponse res = (HttpServletResponse) response;
 
-		// セッションから情報取得
-		HttpSession session = req.getSession(false);
+		String path = req.getServletPath();
 
-		// ユーザーがログインしていないまたは、セッションが切れている場合、login.jspにリダイレクト
-		if (session == null || session.getAttribute("user") == null) {
-			res.sendRedirect("login.jsp");
+		//ログインサーブレット以外ならif文に入る
+		if (!"/login".equals(path)) {
+			// セッションから情報取得
+			HttpSession session = req.getSession(false);
+			//ログインサーブレット以外のサーブレットまたは、jspでユーザーが認証されていないか、セッションが切れている場合
+			if (session == null || session.getAttribute("user") == null) {
+				RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+				rd.forward(request, response);
+			}
 		}
-		// ログイン済みの場合はフィルターチェーンを継続
 		chain.doFilter(request, response);
 
 	}

@@ -34,8 +34,9 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+
+		RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+		rd.forward(request, response);
 	}
 
 	/**
@@ -46,6 +47,11 @@ public class LoginServlet extends HttpServlet {
 		//エンコーディング
 		request.setCharacterEncoding("UTF-8");
 
+		//セッションの開始
+		HttpSession session = request.getSession();
+		//セッションタイムアウトの設定 10秒
+//		session.setMaxInactiveInterval(10);
+
 		//リクエストパラメータの取得
 		int userId = Integer.parseInt(request.getParameter("userId"));
 		String password = request.getParameter("password");
@@ -54,10 +60,7 @@ public class LoginServlet extends HttpServlet {
 		String nextPage = "login.jsp";
 		String error = null;
 		try {
-			//セッションの開始
-			HttpSession session = request.getSession();
-			//セッションタイムアウトの設定 10秒
-//			session.setMaxInactiveInterval(10);
+
 			UserBean user = UserDAO.checkLogin(userId, password);
 
 			//ログイン判定で分岐
@@ -73,12 +76,12 @@ public class LoginServlet extends HttpServlet {
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 			error = "予期せぬエラーが発生しました。";
-			
+
 		}
-		
+
 		// リクエストスコープにattendanceリストをセット
 		request.setAttribute("error", error);
-		
+
 		//転送
 		RequestDispatcher rd = request.getRequestDispatcher(nextPage);
 		rd.forward(request, response);

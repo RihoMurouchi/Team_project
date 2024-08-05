@@ -2,12 +2,15 @@ package servlet;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import model.entity.UserBean;
 
 /**
  * Servlet implementation class LogoutServlet
@@ -38,10 +41,20 @@ public class LogoutServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		// セッションからユーザー情報を取得
 		HttpSession session = request.getSession();
+		UserBean user = (UserBean) session.getAttribute("user");
+
+		// リクエストスコープにuserをセット
+		request.setAttribute("user", user);
+
 		//セッション破棄
-		session.invalidate();
-		request.getRequestDispatcher("login.jsp").forward(request, response);
+		request.getSession().invalidate();
+
+		// logout.jsp ログイン画面へ転送
+		RequestDispatcher rd = request.getRequestDispatcher("logout.jsp");
+		rd.forward(request, response);
+
 	}
 
 }

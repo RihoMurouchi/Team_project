@@ -34,16 +34,7 @@ public class RegisterCompServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		HttpSession session = request.getSession(false);
-		if (session == null || session.getAttribute("user") == null) {
-			session.invalidate();
-			response.sendRedirect("login.jsp"); // ユーザーがログインしていない場合、login.jspにリダイレクト
-		} else {
-			//もしsessionを持っていてもGetで来た場合はとりあえずlogin.jspに戻す。
-			session.invalidate();
-			response.sendRedirect("login.jsp");
-		}
+
 	}
 
 	/**

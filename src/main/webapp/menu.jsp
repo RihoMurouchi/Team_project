@@ -1,11 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%
-if (session == null || session.getAttribute("user") == null) {
-	response.sendRedirect("login.jsp");
-	return;
-}
-%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,12 +19,12 @@ if (session == null || session.getAttribute("user") == null) {
 					</form>
 				</div>
 				<div class="main__register">
-					<form action="register-attendance.jsp" method="post">
+					<form action="register-confirm" method="get">
 						<input class="main__button" type="submit" name="button" value="勤怠登録"><br>
 					</form>
 				</div>
 				<div class="main__logout">
-					<form action="logout.jsp" method="post">
+					<form action="logout" method="post">
 						<input class="main__button" type="submit" name="button" value="ログアウト">
 					</form>
 				</div>

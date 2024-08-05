@@ -36,15 +36,7 @@ public class AttendanceListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		HttpSession session = request.getSession(false);
-		if (session == null || session.getAttribute("user") == null) {
-			session.invalidate();
-			response.sendRedirect("login.jsp"); // ユーザーがログインしていない場合、login.jspにリダイレクト
-		} else {
-			//もしsessionを持っていてもGetで来た場合はとりあえずlogin.jspに戻す。
-			session.invalidate();
-			response.sendRedirect("login.jsp");
-		}
+
 	}
 
 	/**
@@ -55,12 +47,6 @@ public class AttendanceListServlet extends HttpServlet {
 		// セッションからユーザー情報を取得
 		HttpSession session = request.getSession();
 		UserBean user = (UserBean) session.getAttribute("user");
-		
-
-//		if (session == null || user == null) {
-//			response.sendRedirect("login.jsp"); //セッションがl切れたらlogin.jspにリダイレクト
-//			return;
-//		}
 
 		// attendanceリストを格納する変数
 		List<AttendanceBean> attendanceList = null;

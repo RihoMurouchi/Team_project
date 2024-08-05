@@ -31,8 +31,9 @@ public class RegisterConfirmServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		// register-confim.jspへ転送
+		RequestDispatcher rd = request.getRequestDispatcher("/register-attendance.jsp");
+		rd.forward(request, response);
 	}
 
 	/**
