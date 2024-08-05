@@ -17,13 +17,13 @@ import model.entity.AttendanceBean;
  * Servlet implementation class EditAttendance
  */
 @WebServlet("/edit-attendance")
-public class EditAttendanceServlet extends HttpServlet {
+public class EditAttendanceInputConfirmServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public EditAttendanceServlet() {
+	public EditAttendanceInputConfirmServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -33,7 +33,7 @@ public class EditAttendanceServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// =============== テキストエリア内に初期値として勤怠情報を表示するための処理 ===============
+		// =============== 入力フォームの表示と、テキストエリア内に初期値として勤怠情報を表示するための処理 ===============
 		// リクエストのエンコーディング
 		request.setCharacterEncoding("UTF-8");
 

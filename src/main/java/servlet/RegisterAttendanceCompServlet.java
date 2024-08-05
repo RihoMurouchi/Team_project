@@ -18,13 +18,13 @@ import model.entity.UserBean;
  * Servlet implementation class RegisterCompServlet
  */
 @WebServlet("/register-comp")
-public class RegisterCompServlet extends HttpServlet {
+public class RegisterAttendanceCompServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public RegisterCompServlet() {
+	public RegisterAttendanceCompServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

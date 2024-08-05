@@ -15,13 +15,13 @@ import model.entity.AttendanceBean;
  * Servlet implementation class RegisterComfirmServlet
  */
 @WebServlet("/register-confirm")
-public class RegisterConfirmServlet extends HttpServlet {
+public class RegisterAttendanceInputConfirmServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public RegisterConfirmServlet() {
+	public RegisterAttendanceInputConfirmServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -31,7 +31,7 @@ public class RegisterConfirmServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// register-confim.jspへ転送
+		// 
 		RequestDispatcher rd = request.getRequestDispatcher("/register-attendance.jsp");
 		rd.forward(request, response);
 	}
