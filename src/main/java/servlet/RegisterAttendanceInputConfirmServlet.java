@@ -32,7 +32,7 @@ public class RegisterAttendanceInputConfirmServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// 
-		RequestDispatcher rd = request.getRequestDispatcher("/register-attendance.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/register-attendance.jsp");
 		rd.forward(request, response);
 	}
 

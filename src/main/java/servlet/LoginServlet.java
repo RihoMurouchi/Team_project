@@ -35,7 +35,7 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/login.jsp");
 		rd.forward(request, response);
 	}
 
@@ -57,7 +57,7 @@ public class LoginServlet extends HttpServlet {
 		String password = request.getParameter("password");
 
 		//checkLoginメソッドの呼び出し
-		String nextPage = "login.jsp";
+		String nextPage = "/WEB-INF/login.jsp";
 		String error = null;
 		try {
 
@@ -66,7 +66,7 @@ public class LoginServlet extends HttpServlet {
 			//ログイン判定で分岐
 			if (user != null) {
 				session.setAttribute("user", user);//成功：ログイン成功でセッションにユーザ情報セット
-				nextPage = "menu.jsp";
+				nextPage = "/WEB-INF/menu.jsp";
 
 			} else {
 				//失敗：ログイン失敗でエラーメッセージをリクエストスコープにセット

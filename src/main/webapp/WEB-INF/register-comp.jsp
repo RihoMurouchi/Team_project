@@ -30,7 +30,7 @@ String error = (String) request.getAttribute("error");
 				<%
 			}
 			%>
-				<form action="menu.jsp" method="post">
+				<form action="menu" method="post">
 					<input type="submit" name="button" value="メニュー画面へ戻る">
 				</form>
 			</div>

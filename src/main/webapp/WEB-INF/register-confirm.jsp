@@ -37,7 +37,7 @@ AttendanceBean attendance = (AttendanceBean) request.getAttribute("attendance");
 				<input type="hidden" name="userId" value="<%=attendance.getUserId()%>">
 			</div>
 			<div>
-				<a href="register-attendance.jsp">戻る</a>
+				<a href="register-attendance">戻る</a>
 			</div>
 		</form>
 	</div>

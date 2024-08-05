@@ -49,10 +49,10 @@ public class LogoutServlet extends HttpServlet {
 		request.setAttribute("user", user);
 
 		//セッション破棄
-		request.getSession().invalidate();
+		session.invalidate();
 
 		// logout.jsp ログイン画面へ転送
-		RequestDispatcher rd = request.getRequestDispatcher("logout.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/logout.jsp");
 		rd.forward(request, response);
 
 	}

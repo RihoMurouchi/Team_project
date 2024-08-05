@@ -88,7 +88,7 @@ public class AttendanceListServlet extends HttpServlet {
 		request.setAttribute("attendanceList", attendanceList);
 
 		// attendanceList.jsp 勤怠一覧画面へ転送
-		RequestDispatcher rd = request.getRequestDispatcher("attendance-list.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/attendance-list.jsp");
 		rd.forward(request, response);
 
 	}

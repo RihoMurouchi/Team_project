@@ -62,7 +62,7 @@ public class DeleteAttendanceCompServlet extends HttpServlet {
 		request.setAttribute("error", error);
 
 		// 転送
-		RequestDispatcher rd = request.getRequestDispatcher("delete-attendance-comp.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/delete-attendance-comp.jsp");
 		rd.forward(request, response);
 	}
 

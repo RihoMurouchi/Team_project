@@ -43,7 +43,9 @@ UserBean user = (UserBean) session.getAttribute("user");
 		</div>
 		</form>
 		<div>
-			<button class="main__button" type="button" onclick="history.back()">戻る</button>
+			<form action="attendance-list" method="post">
+				<input class="main__button" type="submit" name="button" value="戻る">
+			</form>
 		</div>
 		<%
 		}

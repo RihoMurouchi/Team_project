@@ -30,7 +30,12 @@
 					</form>
 				</div>
 				<div>
-					<button type="button" onclick="history.back()">戻る</button>
+					<form action="attendance-list" method="post">
+						<input class="main__button" type="submit" name="button" value="一覧画面へ">
+					</form>
+					<form action="menu" method="get">
+						<input class="main__button" type="submit" name="button" value="メニューへ">
+					</form>
 				</div>
 			</div>
 		</div>

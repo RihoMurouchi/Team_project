@@ -39,7 +39,7 @@ String error = (String) request.getAttribute("error");
 				</div>
 				<div class="main__box">
 					<div class="main__errorMessage">
-						<!-- 検索結果の表示 -->
+						<!-- 検索結果の表示 または一覧表示 -->
 						<%
 						if (attendanceList == null) {
 						%>
@@ -104,7 +104,7 @@ String error = (String) request.getAttribute("error");
 				</div>
 		</main>
 		<footer class="footer">
-			<a class="footer__button" href="menu.jsp">メニュー画面へ戻る</a>
+			<a class="footer__button" href="menu">メニュー画面へ戻る</a>
 		</footer>
 	</div>
 </body>
