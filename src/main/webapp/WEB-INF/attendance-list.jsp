@@ -14,22 +14,21 @@ String error = (String) request.getAttribute("error");
 
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="css/header.css">
 <link rel="stylesheet" href="css/main.css">
 <title>勤怠一覧画面</title>
 </head>
 
 <body>
 	<div class="wrapper">
-		<header class="header">
-			<marquee behavior="scroll">
-				<h3><%=user.getName()%>さん!! お疲れ様です！⊂二（＾ω＾ ）二二⊃ﾌﾞｰﾝ
-				</h3>
-			</marquee>
-			<h2 class="list__title">勤怠一覧</h2>
-		</header>
 		<main>
 			<div class="main">
+				<div class="main__titleBox">
+					<marquee behavior="scroll">
+						<h3><%=user.getName()%>さん!! お疲れ様です！⊂二（＾ω＾ ）二二⊃ﾌﾞｰﾝ
+						</h3>
+					</marquee>
+					<h2 class="list__title">勤怠一覧</h2>
+				</div>
 				<div class="main__search">
 					<form action="attendance-list" method="post">
 						<label for="date"></label><br> <input type="date" name="date" id="date" required> <input class="main__button" type="submit"
@@ -104,7 +103,7 @@ String error = (String) request.getAttribute("error");
 			</div>
 		</main>
 		<footer class="footer">
-			<a class="footer__button" href="menu">メニュー画面へ戻る</a>
+			<button class="main__button" type="submit">メニュー画面へ</button>
 		</footer>
 	</div>
 </body>

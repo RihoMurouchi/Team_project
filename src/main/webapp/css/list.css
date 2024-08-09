@@ -3,10 +3,9 @@
 
  .main {
     background-color: rgb(255, 255, 255);
-	text-align: center;
+/*	text-align: center;*/
 	}
 
 .table, th { 
 border: 2px #808080 solid;
 text-align: center; }
-
