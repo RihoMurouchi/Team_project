@@ -19,18 +19,18 @@ String error = (String) request.getAttribute("error");
 			<h2>勤怠登録完了('◇')ゞ</h2>
 			<div class="main__registerComp">
 				<%
-			if(count == null || count == 0){
-			%>
+				if (count == null || count == 0) {
+				%>
 				<p class='error'><%=error%></p>
 
 				<%
-			}else{
-			%>
+				} else {
+				%>
 				<%=count%>件の勤怠情報を登録しました。
 				<%
-			}
-			%>
-				<form action="menu" method="post">
+				}
+				%>
+				<form action="menu" method="get">
 					<input type="submit" name="button" value="メニュー画面へ戻る">
 				</form>
 			</div>
