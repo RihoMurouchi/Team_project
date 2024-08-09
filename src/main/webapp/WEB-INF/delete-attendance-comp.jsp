@@ -13,20 +13,24 @@ String error = (String) request.getAttribute("error");
 <title>勤怠削除完了画面</title>
 </head>
 <body>
-	<%
-	if (count == null || count == 0) {
-	%>
-	<p class="err"><%=error%></p>
-	<%
-	} else {
-	%>
-	<%=count%>件の勤怠情報を削除しました。
-	<%
-	}
-	%>
-	<br>
-	<form action="attendance-list" method="post">
-		<input class="main__button" type="submit" name="button" value="勤怠一覧へ">
-	</form>
+	<main>
+		<div class="main__box">
+			<%
+			if (count == null || count == 0) {
+			%>
+			<p class="err"><%=error%></p>
+			<%
+			} else {
+			%>
+			<%=count%>件の勤怠情報を削除しました。
+			<%
+			}
+			%>
+			<br>
+			<form action="attendance-list" method="post">
+				<input class="main__button" type="submit" name="button" value="勤怠一覧へ">
+			</form>
+		</div>
+	</main>
 </body>
 </html>

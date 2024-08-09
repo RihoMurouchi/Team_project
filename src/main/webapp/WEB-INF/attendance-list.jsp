@@ -21,38 +21,38 @@ String error = (String) request.getAttribute("error");
 </head>
 
 <body>
-	<div class="wrapper">
-		<header class="header">
-			<marquee behavior="scroll">
-				<h3><%=user.getName()%>さん!! お疲れ様です！⊂二（＾ω＾ ）二二⊃ﾌﾞｰﾝ</h3>
-			</marquee>
-			<h2 class="list__title">勤怠一覧</h2>
-		</header>
-		<main>
-			<div class="main">
+	<header class="header">
+		<marquee behavior="scroll">
+			<%=user.getName()%>さん!! お疲れ様です！⊂二（＾ω＾ ）二二⊃ﾌﾞｰﾝ
+		</marquee>
+		<h2 class="header__title">勤怠一覧</h2>
+	</header>
+	<main>
+		<div class="main">
+			<div class="main__box">
 				<div class="main__search">
 					<form action="attendance-list" method="post">
-						<label for="date"></label><br> <input type="date" name="date" id="date" required>
-						<input class="main__button" type="submit" name="searchButton" value="検索"><br>
+						<label for="date"></label><br> <input type="date" name="date" id="date" required> <input class="main__button" type="submit"
+							name="searchButton" value="検索"><br>
 						</button>
 					</form>
 				</div>
-				<div class="main__box">
+				<div class="main__listBox">
 					<div class="main__errorMessage">
 						<!-- 検索結果の表示 または一覧表示 -->
 						<%
 						if (attendanceList == null) {
 						%>
 
-						<p class="err">
+						<h3 class="err">
 							<%=error%>
-						</p>
+						</h3>
 						<%
 						} else if (attendanceList.size() == 0) {
 						%>
-						<p class="err">
+						<h3 class="err">
 							<%=error%>
-						</p>
+						</h3>
 					</div>
 					<div class="main__register">
 						<form action="register-confirm" method="get">
@@ -87,8 +87,7 @@ String error = (String) request.getAttribute("error");
 									<!-- 編集と削除のリンク -->
 									<td><a class="main__button" href="edit-attendance?id=<%=attendance.getId()%>">編集</a></td>
 									<form action="delete-attendance-confirm" method="post">
-										<td><button class="main__button" type="submit">削除</button></td> <input type="hidden"
-											name="id" value="<%=attendance.getId()%>">
+										<td><button class="main__button" type="submit">削除</button></td> <input type="hidden" name="id" value="<%=attendance.getId()%>">
 									</form>
 								</tr>
 								<%
@@ -102,11 +101,11 @@ String error = (String) request.getAttribute("error");
 						</table>
 					</div>
 				</div>
-		</main>
-		<footer class="footer">
-			<a class="footer__button" href="menu">メニュー画面へ戻る</a>
-		</footer>
-	</div>
+			</div>
+	</main>
+	<footer class="footer">
+		<a class="footer__button" href="menu">メニュー画面へ戻る</a>
+	</footer>
 </body>
 
 </html>

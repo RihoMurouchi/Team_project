@@ -3,12 +3,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="css/main.css">
 <title>勤怠登録</title>
 </head>
 <body>
 	<main>
 		<div class="main">
-			<div class="main__Wrapper">
+			<div class="main__box">
 				<h2>勤怠登録</h2>
 				<div class="main__registerBox">
 					<form action="register-confirm" method="post">

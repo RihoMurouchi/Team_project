@@ -2,16 +2,16 @@
 
 /* ================ ボタン(footer) ================ */
 .footer {
-	border: 1px solid #000;
-    border-radius: 0;
-    background: #fff;
-	text-align: center;
-	position: fixed;
-	font-size: 13px;
-	margin-top: 20px;
-	padding: 5px;
-	justify-content: center;
-	position: absolute;
+	border: 0;
+	border-radius: 5px;
+	text-decoration: none;
+	/*  background: rgb(0, 128, 128);*/
+	color: #fff;
+	padding: 8px 16px;
+	margin-top: 10px;
+	font-size: 16px;
+	cursor: pointer;
+	background: linear-gradient(to bottom, #00acee, rgb(0, 128, 128));
 }
 
 /*.footer__button {*/
