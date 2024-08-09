@@ -3,15 +3,13 @@
 /* 共通スタイルは外に書く */
 
 .wrapper {
-	background-image: url(/src/main/webapp/css/view-basketball-court.jpg);
-	background-repeat: no-repeat;
+	align-items: center;
+	justify-content: center;
 }
 
 .main__box {
-	text-align: center;
 	margin-bottom: 50px;
 	width: 100%;
-	display: flex;
 }
 
 /* ================ エラーメッセージ ================ */
