@@ -26,7 +26,7 @@
 							<label for="over">残業時間</label><br> <input type="time" name="over" id="over" required>
 						</div>
 						<div>
-							<input type="submit" name="button" value="確認画面へ"><br>
+							<input class="main__button" type="submit" name="button" value="確認画面へ"><br>
 						</div>
 					</form>
 				</div>
