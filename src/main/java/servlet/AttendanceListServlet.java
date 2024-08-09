@@ -1,6 +1,5 @@
 package servlet;
 
-
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -37,7 +36,8 @@ public class AttendanceListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/attendance-list.jsp");
+		rd.forward(request, response);
 	}
 
 	/**
@@ -57,7 +57,7 @@ public class AttendanceListServlet extends HttpServlet {
 
 		String searchButton = request.getParameter("searchButton");
 		String date = request.getParameter("date");
-		String error = null;
+		String error = "予期せぬエラーが発生したため最初から操作をお願いします。";
 
 		//ボタン押下時に中身が空でなければ以下の処理が始まる
 		if (searchButton == null) {
