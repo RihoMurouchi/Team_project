@@ -25,7 +25,7 @@ String error = (String) request.getAttribute("error");
 		<marquee behavior="scroll">
 			<%=user.getName()%>さん!! お疲れ様です！⊂二（＾ω＾ ）二二⊃ﾌﾞｰﾝ
 		</marquee>
-		<h2 class="header__title">勤怠一覧</h2>
+		<div class="header__title">勤怠一覧</div>
 	</header>
 	<main>
 		<div class="main">
@@ -44,15 +44,15 @@ String error = (String) request.getAttribute("error");
 						if (attendanceList == null) {
 						%>
 
-						<h3 class="err">
+						<p class="err">
 							<%=error%>
-						</h3>
+						</p>
 						<%
 						} else if (attendanceList.size() == 0) {
 						%>
-						<h3 class="err">
+						<p class="err">
 							<%=error%>
-						</h3>
+						</p>
 					</div>
 					<div class="main__register">
 						<form action="register-confirm" method="get">

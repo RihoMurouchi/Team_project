@@ -5,20 +5,13 @@
 .wrapper {
 	background-image: url(/src/main/webapp/css/view-basketball-court.jpg);
 	background-repeat: no-repeat;
-	
 }
 
 .main__box {
 	text-align: center;
 	margin-bottom: 50px;
 	width: 100%;
-}
-
-.main__listBox {
-	text-align: center;
-	margin-bottom: 50px;
-	width: 100%;
-	display: none;
+	display: flex;
 }
 
 /* ================ エラーメッセージ ================ */
