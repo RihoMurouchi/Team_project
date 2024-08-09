@@ -16,20 +16,20 @@ String error = (String) request.getAttribute("error");
 <meta charset="UTF-8">
 <link rel="stylesheet" href="css/header.css">
 <link rel="stylesheet" href="css/main.css">
-<link rel="stylesheet" href="css/footer.css">
 <title>勤怠一覧画面</title>
 </head>
 
 <body>
-	<header class="header">
-		<marquee behavior="scroll">
-			<%=user.getName()%>さん!! お疲れ様です！⊂二（＾ω＾ ）二二⊃ﾌﾞｰﾝ
-		</marquee>
-		<div class="header__title">勤怠一覧</div>
-	</header>
-	<main>
-		<div class="main">
-			<div class="main__box">
+	<div class="wrapper">
+		<header class="header">
+			<marquee behavior="scroll">
+				<h3><%=user.getName()%>さん!! お疲れ様です！⊂二（＾ω＾ ）二二⊃ﾌﾞｰﾝ
+				</h3>
+			</marquee>
+			<h2 class="list__title">勤怠一覧</h2>
+		</header>
+		<main>
+			<div class="main">
 				<div class="main__search">
 					<form action="attendance-list" method="post">
 						<label for="date"></label><br> <input type="date" name="date" id="date" required> <input class="main__button" type="submit"
@@ -37,7 +37,7 @@ String error = (String) request.getAttribute("error");
 						</button>
 					</form>
 				</div>
-				<div class="main__listBox">
+				<div class="main__box">
 					<div class="main__errorMessage">
 						<!-- 検索結果の表示 または一覧表示 -->
 						<%
@@ -102,10 +102,11 @@ String error = (String) request.getAttribute("error");
 					</div>
 				</div>
 			</div>
-	</main>
-	<footer class="footer">
-		<a class="footer__button" href="menu">メニュー画面へ戻る</a>
-	</footer>
+		</main>
+		<footer class="footer">
+			<a class="footer__button" href="menu">メニュー画面へ戻る</a>
+		</footer>
+	</div>
 </body>
 
 </html>
