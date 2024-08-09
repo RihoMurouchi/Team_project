@@ -33,7 +33,8 @@ public class DeleteAttendanceConfirmServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/delete-attendance-confirm.jsp");
+		rd.forward(request, response);
 	}
 
 	/**
@@ -49,11 +50,12 @@ public class DeleteAttendanceConfirmServlet extends HttpServlet {
 
 		// attendanceデータを格納する変数
 		AttendanceBean attendance = null;
-		String error = null;
+		String error = "削除済みの勤怠情報です。";
 
 		try {
 			//getAttendanceOneメソッド呼び出し、attendanceデータ取得
 			attendance = AttendanceDAO.getAttendanceOne(id);
+
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 			error = "予期せぬエラーが発生しました。";
