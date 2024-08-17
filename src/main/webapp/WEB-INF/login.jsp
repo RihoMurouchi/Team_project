@@ -10,9 +10,9 @@ String error = (String) request.getAttribute("error");
 <title>ログイン画面</title>
 </head>
 <body>
-	<main>
-		<div class="main">
-			<div class="wrapper">
+	<div class="wrapper">
+		<main>
+			<div class="main">
 				<div class="main__box">
 					(^^)＜今日も1日ご安全に！
 					<h1>ログイン</h1>
@@ -33,7 +33,7 @@ String error = (String) request.getAttribute("error");
 					</form>
 				</div>
 			</div>
-		</div>
-	</main>
+		</main>
+	</div>
 </body>
 </html>

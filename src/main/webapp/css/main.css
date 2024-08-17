@@ -2,19 +2,11 @@
 
 /* 共通スタイルは外に書く */
 
-.list__title {
- justify-content: center;	
-}
-
-.wrapper {
-	background-image: url(/src/main/webapp/css/view-basketball-court.jpg);
-	background-repeat: no-repeat;
+.main {
+	display: flex;
+	justify-content: center;
 	max-width: 100%;
 	padding-top: 30px;
-}
-
-.main {
-	justify-content: center;
 	margin-bottom: 50px;
 	width: 100%;
 }
@@ -57,18 +49,49 @@
 	/*  background: rgb(0, 128, 128);*/
 	color: #fff;
 	padding: 8px 16px;
-	margin-top: 10px;
 	font-size: 16px;
 	cursor: pointer;
 	background: linear-gradient(to bottom, #00acee, rgb(0, 128, 128));
 }
 
+.main__searchButton {
+	padding: 40px;
+}
+
 /* ================ 勤怠一覧 ================ */
+
+.main__search {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.main__listTitle {
+	margin-left: 15%;
+}
+
 
 th {
 	border: 1px solid #000;
 }
 
+.td {
+	table-layout: fixed;
+	width: 100%;
+}
+
+.td{
+	padding-bottom: 5px;
+}
+
 .main__box {
 	padding-top: 20px;
+}
+
+table td {
+	background: #eee;
+}
+
+table tr:nth-child(odd) td {
+	background: #fff;
 }
